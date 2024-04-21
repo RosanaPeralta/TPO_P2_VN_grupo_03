@@ -1,38 +1,46 @@
 package org.example.Ejercicio2_1.model;
 
-import org.example.model.Queue;
 import org.example.model.Stack;
 
 public class QueueOfStacks implements IQueueOfStacks {
     private static final int MAX = 10;
-    private final Queue queue;
     private int count;
+
+    private final Stack[] arrayStack;
     public QueueOfStacks() {
-        this.queue = new Queue();
+        this.arrayStack = new Stack[MAX];
         this.count = 0;
     }
 
-    public void add(Stack stack) {
-        this.queue.addStack(stack);
+    public void addStack(Stack stack) {
+        if(count == MAX) {
+            throw new RuntimeException("Cantidad máxima de elementos alcanzada");
+        }
+        this.arrayStack[count] = stack;
+        count++;
     }
 
-    public void traza() {
-        if(this.queue.isEmpty()) {
-            throw new RuntimeException("No se puede calcular la traza de una cola vacía");
+    public void removeStack() {
+        if(this.isEmpty()) {
+            throw new RuntimeException("No se puede remover la primer pila de una cola vacía");
+        }
+        for(int i = 0; i < count - 1; i++) {
+            this.arrayStack[i] = this.arrayStack[i + 1];
+        }
+        this.count--;
+    }
+
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+
+    public Stack getFirst() {
+        if(this.isEmpty()) {
+            throw new RuntimeException("No se puede obtener la primer pila de una cola vacía");
         }
 
-        while(!this.queue.isEmpty()){
-            this.queue.remove();
-            count++;
-        }
-        System.out.println(this.count);
+        return this.arrayStack[0];
     }
 
-    public void traspuesta(Queue queueOfStacks) {
-
-    }
-
-    public void sumaMatricial(Queue queueOfStacks) {
-
-    }
 }

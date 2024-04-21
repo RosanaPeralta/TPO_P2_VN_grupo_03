@@ -9,22 +9,22 @@ public interface IQueueOfStacks {
      *
      * @param queueOfStacks la cola de pilas que quiero calcular la traza
      */
-    void add(Stack stack);
+    void addStack(Stack stack);
     /**
      *
      * Calcula la longitud de la cola
      */
-    void traza();
+    void removeStack();
 
     /**
      *
      * @param queueOfStacks la cola de pilas que quiero invertir
      */
-    void traspuesta(Queue queueOfStacks);
+    boolean isEmpty();
     /**
      *
-     * @param queueOfStacks la cola de pilas que quiero sumar matricialmente
+     * a cola de pilas que quiero sumar matricialmente
      */
-    void sumaMatricial(Queue queueOfStacks);
+    Stack getFirst();
 
 }

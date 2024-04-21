@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.Ejercicio2_1.model.QueueOfStacks;
 
+import org.example.Ejercicio2_1.model.stack.QueueOfStacksUtil;
 import org.example.model.Stack;
 
 public class Main {
@@ -25,10 +26,16 @@ public class Main {
 
 
         QueueOfStacks queueOfStacks = new QueueOfStacks();
+        QueueOfStacksUtil queueOfStacks12 = new QueueOfStacksUtil();
 
-        queueOfStacks.add(stack1);
-        queueOfStacks.add(stack2);
-        queueOfStacks.add(stack3);
-        queueOfStacks.traza();
+        queueOfStacks.addStack(stack1);
+        queueOfStacks.addStack(stack2);
+        queueOfStacks.addStack(stack3);
+
+        queueOfStacks12.traza(queueOfStacks);
+        queueOfStacks.removeStack();
+        queueOfStacks12.traza(queueOfStacks);
+
+
     }
 }
