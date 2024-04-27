@@ -70,7 +70,7 @@ public class QueueOfStacksUtil {
     }
 
     public void traspuesta(QueueOfStacks queueOfStacks) {
-        QueueOfStacks transposeQueue = new QueueOfStacks();
+        QueueOfStacks auxQueueOfStacks = new QueueOfStacks();
         QueueOfStacks copyQueueOfStack = copy(queueOfStacks);
 
         int queueSize = 0;
@@ -93,25 +93,25 @@ public class QueueOfStacksUtil {
             Stack transposeStack = new Stack();
             for (int j = 0; j < queueSize; j++) {
                 Stack currentStack = queueOfStacks.getFirst();
-                int candidate = currentStack.getTop();
-                transposeStack.add(candidate);
+                int topCurrentStack = currentStack.getTop();
+                transposeStack.add(topCurrentStack);
                 currentStack.remove();
                 queueOfStacks.addStack(currentStack);
                 queueOfStacks.removeStack();
             }
-            transposeQueue.addStack(transposeStack);
+            auxQueueOfStacks.addStack(transposeStack);
         }
 
         for (int i = 0; i < queueSize; i++) {
             Stack finalStack = new Stack();
             for (int j = 0; j < stackSize; j++) {
-                finalStack.add(transposeQueue.getFirst().getTop());
-                transposeQueue.getFirst().remove();
+                finalStack.add(auxQueueOfStacks.getFirst().getTop());
+                auxQueueOfStacks.getFirst().remove();
             }
-            transposeQueue.addStack(finalStack);
-            transposeQueue.removeStack();
+            auxQueueOfStacks.addStack(finalStack);
+            auxQueueOfStacks.removeStack();
         }
-        System.out.println(transposeQueue);
+        System.out.println(auxQueueOfStacks);
     }
 
     public void sumaMatricial(Queue queueOfStacks) {
