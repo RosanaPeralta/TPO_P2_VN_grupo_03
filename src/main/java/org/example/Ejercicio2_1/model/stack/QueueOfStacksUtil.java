@@ -46,7 +46,6 @@ public class QueueOfStacksUtil {
             }
 
             countRows = 0;
-
         }
 
         // Caso Crítico: Matriz no simétrica
@@ -71,7 +70,48 @@ public class QueueOfStacksUtil {
     }
 
     public void traspuesta(QueueOfStacks queueOfStacks) {
+        QueueOfStacks transposeQueue = new QueueOfStacks();
+        QueueOfStacks copyQueueOfStack = copy(queueOfStacks);
 
+        int queueSize = 0;
+        if(queueOfStacks.isEmpty()){
+            throw new RuntimeException("No se puede calcular la traspuesta de una matriz vacía");
+        }
+        int stackSize = 0;
+        while(!copyQueueOfStack.isEmpty()){
+            Stack auxStack = copyQueueOfStack.getFirst();
+            stackSize = 0;
+            while(!auxStack.isEmpty()){
+                stackSize++;
+                auxStack.remove();
+            }
+            queueSize++;
+            copyQueueOfStack.removeStack();
+        }
+
+        for (int i = 0; i < stackSize; i++) {
+            Stack transposeStack = new Stack();
+            for (int j = 0; j < queueSize; j++) {
+                Stack currentStack = queueOfStacks.getFirst();
+                int candidate = currentStack.getTop();
+                transposeStack.add(candidate);
+                currentStack.remove();
+                queueOfStacks.addStack(currentStack);
+                queueOfStacks.removeStack();
+            }
+            transposeQueue.addStack(transposeStack);
+        }
+
+        for (int i = 0; i < queueSize; i++) {
+            Stack finalStack = new Stack();
+            for (int j = 0; j < stackSize; j++) {
+                finalStack.add(transposeQueue.getFirst().getTop());
+                transposeQueue.getFirst().remove();
+            }
+            transposeQueue.addStack(finalStack);
+            transposeQueue.removeStack();
+        }
+        System.out.println(transposeQueue);
     }
 
     public void sumaMatricial(Queue queueOfStacks) {

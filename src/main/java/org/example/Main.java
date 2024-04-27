@@ -17,7 +17,6 @@ public class Main {
         stack1.add(7);
         stack1.add(3);
 
-
         stack2.add(2);
         stack2.add(3);
         stack2.add(8);
@@ -42,7 +41,8 @@ public class Main {
         queueOfStacks.addStack(stack3);
         queueOfStacks.addStack(stack4);
 
-        queueOfStacks12.traza(queueOfStacks);
+        //queueOfStacks12.traza(queueOfStacks);
+        queueOfStacks12.traspuesta(queueOfStacks);
 
     }
 }
