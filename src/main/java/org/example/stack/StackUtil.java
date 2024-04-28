@@ -64,4 +64,14 @@ public class StackUtil {
         return stack3.getTop();
     }
 
+    public static Stack invert(Stack stack){
+        IStack aux= copy(stack);
+        Stack inverted= new Stack();
+        while(!aux.isEmpty()){
+            inverted.add(aux.getTop());
+            aux.remove();
+        }
+        return inverted;
+    }
+
 }

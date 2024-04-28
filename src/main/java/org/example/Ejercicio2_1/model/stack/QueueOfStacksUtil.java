@@ -4,6 +4,8 @@ import org.example.Ejercicio2_1.model.QueueOfStacks;
 import org.example.model.Queue;
 import org.example.model.Stack;
 
+import static org.example.stack.StackUtil.invert;
+
 public class QueueOfStacksUtil {
 
     public void traza(QueueOfStacks queueOfStacks) {
@@ -114,8 +116,27 @@ public class QueueOfStacksUtil {
         System.out.println(auxQueueOfStacks);
     }
 
-    public void sumaMatricial(Queue queueOfStacks) {
+    public static QueueOfStacks sumaMatricial(QueueOfStacks queueOfStacks1, QueueOfStacks queueOfStacks2){
+        QueueOfStacks queueOfStacks_aux1= copy(queueOfStacks1);
+        QueueOfStacks queueOfStacks_aux2= copy(queueOfStacks2);
+        QueueOfStacks queueOfStacks_suma= new QueueOfStacks();
 
+        while(!queueOfStacks_aux1.isEmpty() && !queueOfStacks_aux2.isEmpty()){
+            Stack aux_stack1=queueOfStacks_aux1.getFirst();
+            Stack aux_stack2=queueOfStacks_aux2.getFirst();
+            Stack stack_suma= new Stack();
+            while(!aux_stack1.isEmpty() && !aux_stack2.isEmpty()){
+                stack_suma.add(aux_stack1.getTop()+aux_stack2.getTop());
+                aux_stack1.remove();
+                aux_stack2.remove();
+            }
+            stack_suma=invert(stack_suma);
+            queueOfStacks_suma.addStack(stack_suma);
+            queueOfStacks_aux1.removeStack();
+            queueOfStacks_aux2.removeStack();
+        }
+
+        return queueOfStacks_suma;
     }
 
     public static Stack copyStack(Stack stack){
