@@ -72,7 +72,7 @@ public class QueueOfStacksUtil {
     }
 
     public void traspuesta(QueueOfStacks queueOfStacks) {
-        QueueOfStacks auxQueueOfStacks = new QueueOfStacks();
+        QueueOfStacks traspuestaMatriz = new QueueOfStacks();
         QueueOfStacks copyQueueOfStack = copy(queueOfStacks);
 
         int queueSize = 0;
@@ -101,19 +101,19 @@ public class QueueOfStacksUtil {
                 queueOfStacks.addStack(currentStack);
                 queueOfStacks.removeStack();
             }
-            auxQueueOfStacks.addStack(transposeStack);
+            traspuestaMatriz.addStack(transposeStack);
         }
 
         for (int i = 0; i < queueSize; i++) {
             Stack finalStack = new Stack();
             for (int j = 0; j < stackSize; j++) {
-                finalStack.add(auxQueueOfStacks.getFirst().getTop());
-                auxQueueOfStacks.getFirst().remove();
+                finalStack.add(traspuestaMatriz.getFirst().getTop());
+                traspuestaMatriz.getFirst().remove();
             }
-            auxQueueOfStacks.addStack(finalStack);
-            auxQueueOfStacks.removeStack();
+            traspuestaMatriz.addStack(finalStack);
+            traspuestaMatriz.removeStack();
         }
-        System.out.println(auxQueueOfStacks);
+        System.out.println(traspuestaMatriz);
     }
 
     public static QueueOfStacks sumaMatricial(QueueOfStacks queueOfStacks1, QueueOfStacks queueOfStacks2){

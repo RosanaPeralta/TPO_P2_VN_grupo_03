@@ -5,13 +5,10 @@ public class Queue implements IQueue {
     private static final int MAX = 10;
 
     private int[] array;
-    private Stack[] arrayStack;
-
     private int count;
 
     public Queue() {
         this.array = new int[MAX];
-        this.arrayStack = new Stack[MAX];
         this.count = 0;
     }
 
@@ -23,15 +20,6 @@ public class Queue implements IQueue {
         this.array[count] = a;
         count++;
     }
-
-    public void addStack(Stack stack) {
-        if(count == MAX) {
-            throw new RuntimeException("Cantidad máxima de elementos alcanzada");
-        }
-        this.arrayStack[count] = stack;
-        count++;
-    }
-
 
     public void remove() {
         if(this.isEmpty()) {

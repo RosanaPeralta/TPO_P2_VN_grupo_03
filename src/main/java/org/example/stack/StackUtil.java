@@ -74,4 +74,15 @@ public class StackUtil {
         return inverted;
     }
 
+    public int size(Stack stack){
+        int count = 0;
+        IStack auxStack = copy(stack);
+
+        while(!auxStack.isEmpty()){
+            count++;
+            auxStack.remove();
+        }
+        return count;
+    }
+
 }
