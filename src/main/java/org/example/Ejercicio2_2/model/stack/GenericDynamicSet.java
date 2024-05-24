@@ -6,10 +6,10 @@ import java.util.Random;
 
 public class GenericDynamicSet<E> implements IGenericSet<E> {
     private GenericNode<E> first;
-    private int count;
+    private int count = 0;
 
     @Override
-    public Object choose() {
+    public E choose() {
         if(this.count == 0) {
             throw new RuntimeException("No se puede obtener elemento de un conjunto vacio");
         }
@@ -25,14 +25,14 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
             i++;
             current = current.getNext();
         }
-
-        return 0;
+            return current.getValue();
     }
 
     @Override
-    public void add(Object item) {
+    public void add(E item) {
         if(this.isEmpty()) {
-            this.first = (GenericNode<E>) new GenericNode<>(item, null);
+            this.first = new GenericNode<>(item, null);
+            count++;
             return;
         }
         GenericNode<E> current = this.first;
@@ -43,33 +43,45 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
             current = current.getNext();
         }
         current.setNext((GenericNode<E>) new GenericNode<>(item, null));
+        count++;
     }
 
     @Override
-    public void remove(Object item) {
-        if(this.isEmpty()) {
+    public void remove(E item) {
+        if(this.isEmpty()) { // Caso Set vacío
             throw new RuntimeException("No se pueden quitar elementos de un conjunto vacío");
         }
-        if(this.first.getNext() == null) {
+        if(this.first.getNext() == null) { // Caso un único elemento
             if(this.first.getValue() == item) {
                 this.first = null;
+                count--;
             }
             return;
         }
 
         GenericNode<E> backup = this.first;
         GenericNode<E> current = this.first.getNext();
-        while(current.getNext() != null) {
+
+        if(this.first == item){
+            this.first = this.first.getNext();
+            return;
+        }
+
+        while(current.getNext() != null) { // Caso es un elemento en el medio
             if(current.getValue() == item) {
                 backup.setNext(current.getNext());
+                count--;
                 return;
             }
             current = current.getNext();
+            backup = backup.getNext();
         }
 
-        if(current.getValue() == item) {
-            backup.setNext(current.getNext());
+        if(current.getValue() == item) { // Caso es el último elemento
+            backup.setNext(null);
+            count--;
         }
+
     }
 
     @Override

@@ -1,21 +1,26 @@
 package org.example.Ejercicio2_2.model.stack;
 
 import org.example.Ejercicio2_2.model.stack.GenericInterfaces.*;
+import org.example.Ejercicio2_2.model.stack.GenericUtil.GenericSetUtil;
+import org.example.Ejercicio2_2.model.stack.GenericUtil.GenericStackUtil;
 import org.example.model.IGenericSet;
 
 import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        IGenericStack<Integer> intStack = new GenericStack<>();
+        GenericStack<Integer> intStack = new GenericStack<>();
         intStack.add(2);
         intStack.add(4);
         intStack.add(7);
 
-        IGenericStack<String> strStack = new GenericStack<>();
+        GenericStack<String> strStack = new GenericStack<>();
         strStack.add("hola");
         strStack.add("2");
         strStack.add("'S0'");
+
+        GenericStackUtil genericStackUtils = new GenericStackUtil();
+        GenericStack<String> invertido = genericStackUtils.invert(strStack);
 
         IGenericQueue<Integer> intQueue = new GenericQueue<>();
         intQueue.add(2);
@@ -35,7 +40,12 @@ public class Main {
         intSet.add(2);
         // intSet.add("sd"); - Da error, lo que esta bien
         intSet.add(5);
-        intSet.choose(); // Pendiente de revisar!
+        intSet.add(6);
+        intSet.add(1);
+        Object elegido = intSet.choose(); // Pendiente de revisar!
+        GenericSetUtil setutis = new GenericSetUtil();
+        GenericDynamicSet<Integer> copia = setutis.copy(intSet);
 
+        System.out.println(elegido);
     }
 }

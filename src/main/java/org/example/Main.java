@@ -5,6 +5,7 @@ import org.example.Ejercicio2_1.model.QueueOfStacks;
 import org.example.Ejercicio2_1.model.stack.QueueOfStacksUtil;
 import org.example.Ejercicio2_3.model.QueueOfQueue;
 import org.example.Ejercicio2_3.model.stack.QueueOfQueueUtil;
+import org.example.model.DynamicSet;
 import org.example.model.Queue;
 import org.example.model.Stack;
 
@@ -89,6 +90,12 @@ public class Main {
         queueOfQueue3.addQueue(queue3);
 
         queueOfQueueUtil.concatenate(queueOfQueue1, queueOfQueue2, queueOfQueue3);
+
+        DynamicSet conjunto = new DynamicSet();
+        conjunto.add(2);
+        conjunto.add(3);
+        conjunto.add(8);
+        System.out.println(conjunto.choose());
 
     }
 }
