@@ -72,13 +72,13 @@ public class QueueOfStacksUtil {
     }
 
     public void traspuesta(QueueOfStacks queueOfStacks) {
+        if(queueOfStacks.isEmpty()){
+            throw new RuntimeException("No se puede calcular la traspuesta de una matriz vacía");
+        }
         QueueOfStacks traspuestaMatriz = new QueueOfStacks();
         QueueOfStacks copyQueueOfStack = copy(queueOfStacks);
 
         int queueSize = 0;
-        if(queueOfStacks.isEmpty()){
-            throw new RuntimeException("No se puede calcular la traspuesta de una matriz vacía");
-        }
         int stackSize = 0;
         while(!copyQueueOfStack.isEmpty()){
             Stack auxStack = copyQueueOfStack.getFirst();
