@@ -15,7 +15,7 @@ public class GenericPriorityQueue<E> implements IGenericPriorityQueue<E> {
         this.count = 0;
     }
 
-    @Override
+
     public void add(E item, int priority) {
         if (this.count == MAX){
             throw new RuntimeException("No se pueden agregar elementos a una cola llena");

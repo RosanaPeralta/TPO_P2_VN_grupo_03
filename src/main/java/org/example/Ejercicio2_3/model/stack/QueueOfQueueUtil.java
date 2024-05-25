@@ -9,7 +9,7 @@ public class QueueOfQueueUtil {
         for (int i = 0; i < queueOfQueues.length; i++) {
             QueueOfQueue queueIterated = queueOfQueues[i];
             if(queueIterated.isEmpty()){
-                throw new RuntimeException("No se puede iterar sobre una cola vacia");
+                continue;
             }
             while(!queueIterated.isEmpty()){
                 Queue currentQueue = queueIterated.getFirst();

@@ -58,7 +58,7 @@ public class QueueOfStacksUtil {
 
         for(int i = 0; i <= countColumns-1; i++){
             QueueOfStacks aux = copy(queueOfStacks);
-            for(int j = 0; j < countColumns-1-i; j++){
+            for(int j = 0; j <= countColumns-1-i; j++){
                 aux.removeStack();
             }
             Stack row = copyStack(aux.getFirst());

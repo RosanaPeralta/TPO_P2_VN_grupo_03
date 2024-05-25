@@ -8,7 +8,7 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
     private GenericNode<E> first;
     private int count = 0;
 
-    @Override
+
     public E choose() {
         if(this.count == 0) {
             throw new RuntimeException("No se puede obtener elemento de un conjunto vacio");
