@@ -1,29 +1,35 @@
 package org.example.stack;
 
 
+import org.example.model.DynamicSet;
 import org.example.model.IStack;
+import org.example.model.Set;
 import org.example.model.Stack;
 
 public class StackUtil {
 
+    // O(N * N * N) = O(N^3)
     public static IStack copy(IStack stack) {
-        IStack stack1 = new Stack();
-        IStack stack2 = new Stack();
+        IStack stack1 = new Stack(); // C
+        IStack stack2 = new Stack(); // C
 
-        while (!stack.isEmpty()) {
-            stack1.add(stack.getTop());
-            stack2.add(stack.getTop());
-            stack.remove();
+        // O(N + C) ~ O(N)
+        while (!stack.isEmpty()) { // N
+            stack1.add(stack.getTop());  // C
+            stack2.add(stack.getTop());  // C
+            stack.remove();  // C
         }
 
-        while (!stack1.isEmpty()) {
-            stack.add(stack1.getTop());
-            stack1.remove();
+        // O(N + C) ~ O(N)
+        while (!stack1.isEmpty()) {  // N
+            stack.add(stack1.getTop());  // C
+            stack1.remove();  // C
         }
 
-        while (!stack2.isEmpty()) {
-            stack1.add(stack2.getTop());
-            stack2.remove();
+        // O(N + C) ~ O(N)
+        while (!stack2.isEmpty()) {  // N
+            stack1.add(stack2.getTop());  // C
+            stack2.remove();  // C
         }
 
         return stack1;
@@ -74,7 +80,7 @@ public class StackUtil {
         return inverted;
     }
 
-    public int size(Stack stack){
+    public static int size(IStack stack){
         int count = 0;
         IStack auxStack = copy(stack);
 
@@ -85,4 +91,61 @@ public class StackUtil {
         return count;
     }
 
+    // O(N + C) ~ O(N)
+    public static int moveStackWithMinExtraction(IStack stackA, IStack stackB){
+        int min = 0;  // C
+        boolean flag = true;  // C
+        // O(N + C) ~ O(N)
+        while(!stackA.isEmpty()){  // N
+            if (flag || stackA.getTop() < min){  // C
+                if(!flag){  // C
+                    stackB.add(min);  // C
+                }
+                min = stackA.getTop();  // C
+                flag = false;  // C
+            }
+            else {
+                stackB.add(stackA.getTop());  // C
+            }
+            stackA.remove();  // C
+        }
+        return min;
+    }
+
+    // O(N^3 + C + N + N^2 + C + N^2 + C) ~ O(N^3)
+    public static IStack organiseStack(IStack originalStack){
+        IStack stackA = copy(originalStack); // N^3
+        IStack stackB = new Stack();  // C
+        IStack stackC = new Stack();  // C
+        Set auxSet = new DynamicSet();  // C
+
+        // O(N + C) ~ O(N)
+        while(!stackA.isEmpty()) {  // N
+            auxSet.add(stackA.getTop());  // C
+            stackA.remove();  // C
+        }
+
+        // O(N * (N + C)) ~ O(N^2)
+        while(!auxSet.isEmpty()){  // N
+            int element = auxSet.choose();  // N + C
+            stackA.add(element);  // C
+            auxSet.remove(element);  // C
+        }
+
+        int stackSize = size(stackA);  // C
+
+        // O(N * (N + C + N + C)) ~ O(N^2)
+        while(stackSize > 0){  // N
+            int min = moveStackWithMinExtraction(stackA,stackB);  // N
+            stackC.add(min);  // C
+            stackSize--;  // C
+            if(stackSize == 0){  // C
+                break;  // C
+            }
+            min = moveStackWithMinExtraction(stackB, stackA);  // N
+            stackC.add(min);  // C
+            stackSize--;  // C
+        }
+        return stackC;  // C
+    }
 }

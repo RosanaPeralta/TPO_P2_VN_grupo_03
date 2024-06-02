@@ -8,22 +8,26 @@ public class DynamicSet implements Set {
     private Node first;
     private int count;
 
+    // O(N + C)
     @Override
     public int choose() {
+        // C
         if(this.isEmpty()) { // C
             throw new RuntimeException("No se puede obtener el elemento de un conjunto vacio"); // C
         }
-        Random random = new Random();
-        int index = random.nextInt(count);
+        Random random = new Random();  // C
+        int index = random.nextInt(count);  // C
 
-        int i = 0;
-        Node current = this.first;
-        while(current != null) {
-            if(i == index) {
-                return current.getValue();
+        int i = 0;  // C
+        Node current = this.first;  // C
+
+        // O(N + C) ~ N
+        while(current != null) {  // N
+            if(i == index) {  // C
+                return current.getValue();  // C
             }
-            i++;
-            current = current.getNext();
+            i++;  // C
+            current = current.getNext();  // C
         }
 
         return 0;

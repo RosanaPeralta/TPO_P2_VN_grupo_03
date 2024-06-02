@@ -9,12 +9,13 @@ public class Stack implements IStack {
         this.array = new int[10];
     }
 
+    // C
     public void add(int a) {
-        if(count == 10) {
-            throw new RuntimeException("Muchos elementos");
+        if(count == 10) {  // C
+            throw new RuntimeException("Muchos elementos");  // C
         }
-        array[count] = a;
-        count++;
+        array[count] = a;  // C
+        count++;  // C
     }
 
     public void remove() {
