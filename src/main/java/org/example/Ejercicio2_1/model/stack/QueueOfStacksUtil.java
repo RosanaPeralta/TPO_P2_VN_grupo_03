@@ -77,9 +77,9 @@ public class QueueOfStacksUtil {
         }
         QueueOfStacks traspuestaMatriz = new QueueOfStacks();
         QueueOfStacks copyQueueOfStack = copy(queueOfStacks);
-
         int queueSize = 0;
         int stackSize = 0;
+        int previousStackSize = -1;
         while(!copyQueueOfStack.isEmpty()){
             Stack auxStack = copyQueueOfStack.getFirst();
             stackSize = 0;
@@ -87,6 +87,10 @@ public class QueueOfStacksUtil {
                 stackSize++;
                 auxStack.remove();
             }
+            if (previousStackSize != -1 && previousStackSize != stackSize) {
+                throw new RuntimeException("Se encontró una inconsistencia en las alturas de las pilas");
+            }
+            previousStackSize = stackSize;
             queueSize++;
             copyQueueOfStack.removeStack();
         }
