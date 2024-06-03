@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.Ejercicio2_1.model.IQueueOfStacks;
 import org.example.Ejercicio2_1.model.QueueOfStacks;
 
 import org.example.Ejercicio2_1.model.stack.QueueOfStacksUtil;
@@ -20,32 +21,18 @@ public class Main {
 
         stack1.add(8);
         stack1.add(4);
-//        stack1.add(7);
-//        stack1.add(3);
 
         stack2.add(2);
         stack2.add(3);
-//        stack2.add(8);
-//        stack2.add(7);
 
-        stack3.add(3);
-        stack3.add(6);
-//        stack3.add(0);
-//        stack3.add(1);
-
-        stack4.add(3);
-        stack4.add(8);
-//        stack4.add(2);
-//        stack4.add(5);
-
-
+        //4  8 --> 4  8
+        //3  2 --> 2  3
         QueueOfStacks queueOfStacks = new QueueOfStacks();
         QueueOfStacksUtil queueOfStacks1 = new QueueOfStacksUtil();
 
         queueOfStacks.addStack(stack1);
         queueOfStacks.addStack(stack2);
-        queueOfStacks.addStack(stack3);
-        queueOfStacks.addStack(stack4);
+        IQueueOfStacks copyQueue = new QueueOfStacks(); // Crear una copia de la cola para no alterar la original
 
         //queueOfStacks12.traza(queueOfStacks);
         queueOfStacks1.traspuesta(queueOfStacks);
