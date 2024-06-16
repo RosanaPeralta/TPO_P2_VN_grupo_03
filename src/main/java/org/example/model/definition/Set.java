@@ -29,6 +29,4 @@ public interface Set {
      */
     int choose();
 
-    boolean equals();
-
 }

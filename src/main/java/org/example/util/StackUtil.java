@@ -35,7 +35,7 @@ public class StackUtil {
         return stack1;
     }
 
-    public static void print(Stack stack) {
+    public static void printStack(Stack stack) {
         Stack copy = copy(stack);
         while (!copy.isEmpty()) {
             System.out.println(copy.getTop());

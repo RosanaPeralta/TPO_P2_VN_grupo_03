@@ -72,7 +72,7 @@ public class DynamicSet implements Set {
     }
 
     @Override
-    public boolean equals() {
+    public boolean equals(Object o) {
         return false;
     }
 }

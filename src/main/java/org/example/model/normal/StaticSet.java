@@ -53,11 +53,6 @@ public class StaticSet implements Set {
         return this.array[randomIndex];
     }
 
-    @Override
-    public boolean equals() {
-        return false;
-    }
-
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -76,4 +71,5 @@ public class StaticSet implements Set {
         }
         return true;
     }
+
 }

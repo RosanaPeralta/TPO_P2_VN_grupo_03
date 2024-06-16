@@ -18,19 +18,23 @@ public class QueueUtil {
     public static Queue copy(Queue queue) {
         Queue aux = new StaticQueue();
         Queue aux2 = new StaticQueue();
-
         while (!queue.isEmpty()) {
             aux.add(queue.getFirst());
             aux2.add(queue.getFirst());
             queue.remove();
         }
-
         while (!aux.isEmpty()) {
             queue.add(aux.getFirst());
             aux.remove();
         }
-
         return aux2;
+    }
+    public static void printQueue(Queue queue) {
+        Queue aux = copy(queue);
+        while (!aux.isEmpty()){
+            System.out.print(aux.getFirst()+" ");
+            aux.remove();
+        }
     }
 
 }
