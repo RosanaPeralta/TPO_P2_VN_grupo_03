@@ -1,8 +1,7 @@
 package org.example.Ejercicio2_1.model;
 
-import org.example.model.Queue;
-import org.example.model.Stack;
 
+import org.example.model.definition.Stack;
 
 public interface IQueueOfStacks {
     /**
