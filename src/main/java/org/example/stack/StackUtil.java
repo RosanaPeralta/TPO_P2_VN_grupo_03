@@ -8,7 +8,7 @@ import org.example.model.Stack;
 
 public class StackUtil {
 
-    // O(N * N * N) = O(N^3)
+    // O(N + N + N) ~ O(N)
     public static IStack copy(IStack stack) {
         IStack stack1 = new Stack(); // C
         IStack stack2 = new Stack(); // C
@@ -112,9 +112,9 @@ public class StackUtil {
         return min;
     }
 
-    // O(N^3 + C + N + N^2 + C + N^2 + C) ~ O(N^3)
+    // O(N + C + N + N^2 + C + N^2 + C) ~ O(N^2)
     public static IStack organiseStack(IStack originalStack){
-        IStack stackA = copy(originalStack); // N^3
+        IStack stackA = copy(originalStack); // N
         IStack stackB = new Stack();  // C
         IStack stackC = new Stack();  // C
         Set auxSet = new DynamicSet();  // C
