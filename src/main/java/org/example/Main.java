@@ -25,7 +25,6 @@ public class Main {
     }
 
     public static void ejercicio2_1 () {
-        //TODO falta la traza
         Stack stack1 = new StaticStack();
         Stack stack2 = new StaticStack();
         stack1.add(8);
@@ -36,8 +35,9 @@ public class Main {
         QueueOfStacks queueOfStacks = new QueueOfStacks();
         queueOfStacks.addStack(stack1);
         queueOfStacks.addStack(stack2);
-        System.out.println("Original:");
-        print(queueOfStacks);
+        int traza = QueueOfStacksUtil.traza(queueOfStacks);
+        System.out.println("Traza:");
+        System.out.println(traza);
         QueueOfStacks traspuesta = QueueOfStacksUtil.traspuesta(queueOfStacks);
         System.out.println("Traspuesta:");
         print(traspuesta);

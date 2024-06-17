@@ -9,7 +9,7 @@ import static org.example.util.StackUtil.invert;
 
 public class QueueOfStacksUtil {
 
-    public static void traza(QueueOfStacks queueOfStacks) {
+    public static int traza(QueueOfStacks queueOfStacks) {
         QueueOfStacks aux1 = new QueueOfStacks();
         QueueOfStacks aux2 = new QueueOfStacks();
         int countColumns = 0;
@@ -68,7 +68,7 @@ public class QueueOfStacksUtil {
             }
             traza += row.getTop();
         }
-        System.out.println("La traza de la matriz es: " + traza);
+        return traza;
 
     }
 
