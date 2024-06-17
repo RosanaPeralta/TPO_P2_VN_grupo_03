@@ -70,8 +70,20 @@ public class Main {
         queueOfQueue2.addQueue(queue3);
         queueOfQueue2.addQueue(queue4);
         QueueOfQueue concat = QueueOfQueueUtil.concatenate(queueOfQueue, queueOfQueue2);
-        QueueOfQueueUtil.print(concat);
+
+
+        System.out.println("Flat");
+        QueueOfQueue queueOfQueue3 = new QueueOfQueue();
+        queueOfQueue3.addQueue(queue1);
+        queueOfQueue3.addQueue(queue2);
+        queueOfQueue3.addQueue(queue3);
+        queueOfQueue3.addQueue(queue4);
+        Queue flatConcatenada = QueueOfQueueUtil.flat(queueOfQueue3);
+        printQueue(flatConcatenada);
+        System.out.println();
+
     }
+
 
     public static void ejerecicio2_4(){
         StaticStack stack = new StaticStack.Builder().add(4).add(5).build();

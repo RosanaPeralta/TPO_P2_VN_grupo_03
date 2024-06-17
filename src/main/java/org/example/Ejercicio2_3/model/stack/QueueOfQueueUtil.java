@@ -2,6 +2,7 @@ package org.example.Ejercicio2_3.model.stack;
 
 import org.example.Ejercicio2_3.model.QueueOfQueue;
 import org.example.model.definition.Queue;
+import org.example.model.normal.StaticQueue;
 import org.example.util.QueueUtil;
 
 public class QueueOfQueueUtil {
@@ -21,8 +22,19 @@ public class QueueOfQueueUtil {
         return queueOfQueueConcatenated;
     }
 
-    public void flat(QueueOfQueue queueOfQueue){
+    public static Queue flat (QueueOfQueue queueOfQueue){
+        QueueOfQueue aux= copy(queueOfQueue);
+        Queue queueConcatenada = new StaticQueue();
 
+        while (!aux.isEmpty()) {
+            Queue queue = aux.getFirst();
+            while (!queue.isEmpty()) {
+                queueConcatenada.add(queue.getFirst());
+                queue.remove();
+            }
+            aux.removeQueue();
+        }
+        return queueConcatenada;
     }
 
     public void reverseWithDepth(){
