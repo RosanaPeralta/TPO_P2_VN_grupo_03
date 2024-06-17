@@ -35,12 +35,12 @@ public class QueueOfStacksUtil {
         }
 
         while(!aux2.isEmpty()){
-            Stack row = aux2.getFirst();
+            Stack column = aux2.getFirst();
             aux1.addStack(aux2.getFirst());
             aux2.removeStack();
 
-            while(!row.isEmpty()){
-                row.remove();
+            while(!column.isEmpty()){
+                column.remove();
                 countRows++;
             }
 

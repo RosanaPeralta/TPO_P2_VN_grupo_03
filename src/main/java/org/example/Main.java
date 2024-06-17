@@ -81,7 +81,7 @@ public class Main {
         Queue flatConcatenada = QueueOfQueueUtil.flat(queueOfQueue3);
         printQueue(flatConcatenada);
         System.out.println();
-
+        System.out.println();
     }
 
 
