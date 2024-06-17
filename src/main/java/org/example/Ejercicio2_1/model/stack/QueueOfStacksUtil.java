@@ -9,7 +9,7 @@ import static org.example.util.StackUtil.invert;
 
 public class QueueOfStacksUtil {
 
-    public void traza(QueueOfStacks queueOfStacks) {
+    public static void traza(QueueOfStacks queueOfStacks) {
         QueueOfStacks aux1 = new QueueOfStacks();
         QueueOfStacks aux2 = new QueueOfStacks();
         int countColumns = 0;
@@ -59,7 +59,7 @@ public class QueueOfStacksUtil {
 
         for(int i = 0; i <= countColumns-1; i++){
             QueueOfStacks aux = copy(queueOfStacks);
-            for(int j = 0; j <= countColumns-1-i; j++){
+            for(int j = 0; j < countColumns-1-i; j++){
                 aux.removeStack();
             }
             Stack row = StackUtil.copy(aux.getFirst());

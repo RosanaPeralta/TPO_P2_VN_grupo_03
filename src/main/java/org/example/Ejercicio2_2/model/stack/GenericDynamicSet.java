@@ -37,7 +37,7 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
         }
         GenericNode<E> current = this.first;
         while(current.getNext() != null) {
-            if(current.getValue() == item) {
+            if(current.getValue().equals(item)) {
                 return;
             }
             current = current.getNext();
@@ -52,7 +52,7 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
             throw new RuntimeException("No se pueden quitar elementos de un conjunto vacío");
         }
         if(this.first.getNext() == null) { // Caso un único elemento
-            if(this.first.getValue() == item) {
+            if(this.first.getValue().equals(item)) {
                 this.first = null;
                 count--;
             }
@@ -68,7 +68,7 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
         }
 
         while(current.getNext() != null) { // Caso es un elemento en el medio
-            if(current.getValue() == item) {
+            if(current.getValue().equals(item)) {
                 backup.setNext(current.getNext());
                 count--;
                 return;
