@@ -1,17 +1,17 @@
-package org.example.stack;
+package org.example.util;
 
 
-import org.example.model.DynamicSet;
-import org.example.model.IStack;
-import org.example.model.Set;
-import org.example.model.Stack;
+import org.example.model.definition.Set;
+import org.example.model.definition.Stack;
+import org.example.model.dynamic.DynamicSet;
+import org.example.model.normal.StaticStack;
 
 public class StackUtil {
 
-    // O(N + N + N) ~ O(N)
-    public static IStack copy(IStack stack) {
-        IStack stack1 = new Stack(); // C
-        IStack stack2 = new Stack(); // C
+    // O(N * N * N) = O(N^3)
+    public static Stack copy(Stack stack) {
+        Stack stack1 = new StaticStack(); // C
+        Stack stack2 = new StaticStack(); // C
 
         // O(N + C) ~ O(N)
         while (!stack.isEmpty()) { // N
@@ -35,21 +35,21 @@ public class StackUtil {
         return stack1;
     }
 
-    public static void print(IStack stack) {
-        IStack copy = copy(stack);
+    public static void printStack(Stack stack) {
+        Stack copy = copy(stack);
         while (!copy.isEmpty()) {
             System.out.println(copy.getTop());
             copy.remove();
         }
     }
 
-    public static int filter(IStack stack) {
-        IStack copy = copy(stack);
+    public static int filter(Stack stack) {
+        Stack copy = copy(stack);
         int count = 0;
 
-        IStack stack1 = new Stack();
-        IStack stack2 = new Stack();
-        IStack stack3 = new Stack();
+        Stack stack1 = new StaticStack();
+        Stack stack2 = new StaticStack();
+        Stack stack3 = new StaticStack();
 
         while (!copy.isEmpty()) {
             stack3.add(copy.getTop());
@@ -71,8 +71,8 @@ public class StackUtil {
     }
 
     public static Stack invert(Stack stack){
-        IStack aux= copy(stack);
-        Stack inverted= new Stack();
+        Stack aux= copy(stack);
+        Stack inverted= new StaticStack();
         while(!aux.isEmpty()){
             inverted.add(aux.getTop());
             aux.remove();
@@ -80,9 +80,9 @@ public class StackUtil {
         return inverted;
     }
 
-    public static int size(IStack stack){
+    public static int size(Stack stack){
         int count = 0;
-        IStack auxStack = copy(stack);
+        Stack auxStack = copy(stack);
 
         while(!auxStack.isEmpty()){
             count++;
@@ -92,7 +92,7 @@ public class StackUtil {
     }
 
     // O(N + C) ~ O(N)
-    public static int moveStackWithMinExtraction(IStack stackA, IStack stackB){
+    public static int moveStackWithMinExtraction(Stack stackA, Stack stackB){
         int min = 0;  // C
         boolean flag = true;  // C
         // O(N + C) ~ O(N)
@@ -112,11 +112,11 @@ public class StackUtil {
         return min;
     }
 
-    // O(N + C + N + N^2 + C + N^2 + C) ~ O(N^2)
-    public static IStack organiseStack(IStack originalStack){
-        IStack stackA = copy(originalStack); // N
-        IStack stackB = new Stack();  // C
-        IStack stackC = new Stack();  // C
+    // O(N^3 + C + N + N^2 + C + N^2 + C) ~ O(N^3)
+    public static Stack organiseStack(Stack originalStack){
+        Stack stackA = copy(originalStack); // N^3
+        Stack stackB = new StaticStack();  // C
+        Stack stackC = new StaticStack();  // C
         Set auxSet = new DynamicSet();  // C
 
         // O(N + C) ~ O(N)

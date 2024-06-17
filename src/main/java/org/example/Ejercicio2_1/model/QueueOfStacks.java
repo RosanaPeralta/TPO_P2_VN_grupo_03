@@ -1,6 +1,6 @@
 package org.example.Ejercicio2_1.model;
 
-import org.example.model.Stack;
+import org.example.model.definition.Stack;
 
 public class QueueOfStacks implements IQueueOfStacks {
     private static final int MAX = 10;
@@ -39,7 +39,6 @@ public class QueueOfStacks implements IQueueOfStacks {
         if(this.isEmpty()) {
             throw new RuntimeException("No se puede obtener la primer pila de una cola vacía");
         }
-
         return this.arrayStack[0];
     }
 

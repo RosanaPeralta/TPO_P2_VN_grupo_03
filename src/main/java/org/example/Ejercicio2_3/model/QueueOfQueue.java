@@ -1,6 +1,6 @@
 package org.example.Ejercicio2_3.model;
 
-import org.example.model.Queue;
+import org.example.model.definition.Queue;
 
 public class QueueOfQueue implements IQueueOfQueue{
     private static final int MAX = 10;
