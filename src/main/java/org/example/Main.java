@@ -3,11 +3,10 @@ package org.example;
 import org.example.Ejercicio2_1.model.QueueOfStacks;
 import org.example.Ejercicio2_1.model.util.QueueOfStacksUtil;
 import org.example.Ejercicio2_3.model.QueueOfQueue;
-import org.example.Ejercicio2_3.model.util.QueueOfQueueUtil;
 import org.example.Ejercicio2_4.model.StaticSet;
 import org.example.Ejercicio2_4.model.StaticStack;
 import org.example.Ejercicio2_4.model.StaticQueue;
-import org.example.Ejercicio2_6.model.StackWithLimit;
+import org.example.Ejercicio2_6.model.DynamicStackWithLimit;
 import org.example.model.definition.Queue;
 import org.example.model.definition.Stack;
 import static org.example.Ejercicio2_1.model.util.QueueOfStacksUtil.print;
@@ -106,7 +105,7 @@ public class Main {
 
     public static void ejercicio2_6(){
         System.out.println("Pila creada con un límite:");
-        Stack stack = new StackWithLimit(4);
+        Stack stack = new DynamicStackWithLimit(4);
         stack.add(1);
         stack.add(1);
         stack.add(4);
