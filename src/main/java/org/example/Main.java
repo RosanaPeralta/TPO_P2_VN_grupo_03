@@ -1,15 +1,17 @@
 package org.example;
 
 import org.example.Ejercicio2_1.model.QueueOfStacks;
-import org.example.Ejercicio2_1.model.stack.QueueOfStacksUtil;
+import org.example.Ejercicio2_1.model.util.QueueOfStacksUtil;
 import org.example.Ejercicio2_3.model.QueueOfQueue;
-import org.example.Ejercicio2_3.model.stack.QueueOfQueueUtil;
+import org.example.Ejercicio2_3.model.util.QueueOfQueueUtil;
 import org.example.Ejercicio2_4.model.StaticSet;
 import org.example.Ejercicio2_4.model.StaticStack;
 import org.example.Ejercicio2_4.model.StaticQueue;
+import org.example.Ejercicio2_6.model.StackWithLimit;
 import org.example.model.definition.Queue;
 import org.example.model.definition.Stack;
-import static org.example.Ejercicio2_1.model.stack.QueueOfStacksUtil.print;
+import static org.example.Ejercicio2_1.model.util.QueueOfStacksUtil.print;
+import static org.example.Ejercicio2_3.model.util.QueueOfQueueUtil.printQueueOfQueue;
 import static org.example.util.QueueUtil.printQueue;
 import static org.example.util.SetUtil.printSet;
 import static org.example.util.StackUtil.printStack;
@@ -22,6 +24,8 @@ public class Main {
         ejercicio2_3();
         System.out.println("Ejercicio 2.4");
         ejerecicio2_4();
+        System.out.println("Ejercicio 2.6");
+        ejercicio2_6();
     }
 
     public static void ejercicio2_1 () {
@@ -59,6 +63,7 @@ public class Main {
         queueOfQueue.addQueue(queue1);
         queueOfQueue.addQueue(queue2);
         QueueOfQueue queueOfQueue2 = new QueueOfQueue();
+        QueueOfQueue queueOfQueueConcat = new QueueOfQueue();
         Queue queue3 = new StaticQueue();
         Queue queue4 = new StaticQueue();
         queue3.add(10);
@@ -69,8 +74,10 @@ public class Main {
         queue4.add(17);
         queueOfQueue2.addQueue(queue3);
         queueOfQueue2.addQueue(queue4);
-        QueueOfQueue concat = QueueOfQueueUtil.concatenate(queueOfQueue, queueOfQueue2);
-
+        QueueOfQueue concat = queueOfQueueConcat.concatenate(queueOfQueue, queueOfQueue2);
+        System.out.println("Concat");
+        printQueueOfQueue(concat);
+        System.out.println();
 
         System.out.println("Flat");
         QueueOfQueue queueOfQueue3 = new QueueOfQueue();
@@ -78,7 +85,7 @@ public class Main {
         queueOfQueue3.addQueue(queue2);
         queueOfQueue3.addQueue(queue3);
         queueOfQueue3.addQueue(queue4);
-        Queue flatConcatenada = QueueOfQueueUtil.flat(queueOfQueue3);
+        Queue flatConcatenada = queueOfQueue3.flat();
         printQueue(flatConcatenada);
         System.out.println();
         System.out.println();
@@ -95,5 +102,16 @@ public class Main {
         StaticQueue queue1 = new StaticQueue(1, 2, 3);
         System.out.println("Cola creada con varios elementos pasados por parámetro:");
         printQueue(queue1);
+    }
+
+    public static void ejercicio2_6(){
+        System.out.println("Pila creada con un límite:");
+        Stack stack = new StackWithLimit(4);
+        stack.add(1);
+        stack.add(1);
+        stack.add(4);
+        stack.add(1);
+        printStack(stack);
+
     }
 }
