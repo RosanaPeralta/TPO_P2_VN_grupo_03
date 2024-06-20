@@ -1,4 +1,4 @@
-package org.example.Ejercicio2_1.model.stack;
+package org.example.Ejercicio2_1.model.util;
 
 import org.example.Ejercicio2_1.model.QueueOfStacks;
 import org.example.model.definition.Stack;

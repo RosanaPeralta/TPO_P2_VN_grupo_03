@@ -1,6 +1,9 @@
 package org.example.Ejercicio2_3.model;
 
 import org.example.model.definition.Queue;
+import org.example.model.normal.StaticQueue;
+
+import static org.example.Ejercicio2_3.model.util.QueueOfQueueUtil.copy;
 
 public class QueueOfQueue implements IQueueOfQueue{
     private static final int MAX = 10;
@@ -38,4 +41,40 @@ public class QueueOfQueue implements IQueueOfQueue{
         }
         return this.arrayQueue[0];
     }
+
+    public QueueOfQueue concatenate(QueueOfQueue... queueOfQueues){
+        QueueOfQueue queueOfQueueConcatenated = new QueueOfQueue();
+        for (int i = 0; i < queueOfQueues.length; i++) {
+            QueueOfQueue queueIterated = queueOfQueues[i];
+            if(queueIterated.isEmpty()){
+                continue;
+            }
+            while(!queueIterated.isEmpty()){
+                Queue currentQueue = queueIterated.getFirst();
+                queueOfQueueConcatenated.addQueue(currentQueue);
+                queueIterated.removeQueue();
+            }
+        }
+        return queueOfQueueConcatenated;
+    }
+
+    public Queue flat (){
+        QueueOfQueue aux= copy(this);
+        Queue queueConcatenada = new StaticQueue();
+
+        while (!aux.isEmpty()) {
+            Queue queue = aux.getFirst();
+            while (!queue.isEmpty()) {
+                queueConcatenada.add(queue.getFirst());
+                queue.remove();
+            }
+            aux.removeQueue();
+        }
+        return queueConcatenada;
+    }
+
+    public void reverseWithDepth(){
+        System.out.println("Not implemented");
+    }
+
 }

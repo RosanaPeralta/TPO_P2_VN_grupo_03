@@ -24,4 +24,17 @@ public interface IQueueOfQueue {
      * La cola de pilas que quiero sumar matricialmente
      */
     Queue getFirst();
+
+    /**
+     *
+     * Concatena varias colas en una misma QueueOfQueue
+     */
+    QueueOfQueue concatenate(QueueOfQueue... queueOfQueues);
+
+    /**
+     * Devuelve una cola con todas las subcolas.
+     */
+    Queue flat ();
+
+    void reverseWithDepth();
 }

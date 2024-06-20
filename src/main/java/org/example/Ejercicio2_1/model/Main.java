@@ -1,6 +1,6 @@
 package org.example.Ejercicio2_1.model;
 
-import org.example.Ejercicio2_1.model.stack.QueueOfStacksUtil;
+import org.example.Ejercicio2_1.model.util.QueueOfStacksUtil;
 import org.example.model.definition.Stack;
 import org.example.model.dynamic.DynamicStack;
 
