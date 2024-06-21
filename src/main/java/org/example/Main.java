@@ -3,9 +3,9 @@ package org.example;
 import org.example.Ejercicio2_1.model.QueueOfStacks;
 import org.example.Ejercicio2_1.model.util.QueueOfStacksUtil;
 import org.example.Ejercicio2_3.model.QueueOfQueue;
+import org.example.Ejercicio2_4.model.StaticQueue;
 import org.example.Ejercicio2_4.model.StaticSet;
 import org.example.Ejercicio2_4.model.StaticStack;
-import org.example.Ejercicio2_4.model.StaticQueue;
 import org.example.Ejercicio2_6.model.DynamicStackWithLimit;
 import org.example.Ejercicio2_6.model.RandomMultipleDictionary;
 import org.example.Ejercicio2_6.model.StaticMultiSet;
@@ -33,7 +33,7 @@ public class Main {
         ejercicio2_6();
     }
 
-    public static void ejercicio2_1 () {
+    public static void ejercicio2_1() {
         Stack stack1 = new StaticStack();
         Stack stack2 = new StaticStack();
         stack1.add(8);
@@ -55,7 +55,7 @@ public class Main {
         print(sumaMatricialResult);
     }
 
-    public static void ejercicio2_3 () {
+    public static void ejercicio2_3() {
         QueueOfQueue queueOfQueue = new QueueOfQueue();
         Queue queue1 = new StaticQueue();
         Queue queue2 = new StaticQueue();
@@ -97,7 +97,7 @@ public class Main {
     }
 
 
-    public static void ejerecicio2_4(){
+    public static void ejerecicio2_4() {
         StaticStack stack = new StaticStack.Builder().add(4).add(5).build();
         System.out.println("Pila creada con Builder:");
         printStack(stack);
@@ -109,7 +109,7 @@ public class Main {
         printQueue(queue1);
     }
 
-    public static void ejercicio2_6(){
+    public static void ejercicio2_6() {
         System.out.println("Pila creada con un límite:");
         Stack stack = new DynamicStackWithLimit(4);
         stack.add(1);

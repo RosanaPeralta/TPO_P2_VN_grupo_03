@@ -29,10 +29,11 @@ public class QueueUtil {
         }
         return aux2;
     }
+
     public static void printQueue(Queue queue) {
         Queue aux = copy(queue);
-        while (!aux.isEmpty()){
-            System.out.print(aux.getFirst()+" ");
+        while (!aux.isEmpty()) {
+            System.out.print(aux.getFirst() + " ");
             aux.remove();
         }
     }

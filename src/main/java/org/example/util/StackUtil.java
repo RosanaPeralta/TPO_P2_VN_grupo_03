@@ -1,9 +1,7 @@
 package org.example.util;
 
 
-import org.example.model.definition.Set;
 import org.example.model.definition.Stack;
-import org.example.model.dynamic.DynamicSet;
 import org.example.model.normal.StaticStack;
 
 public class StackUtil {
@@ -62,7 +60,7 @@ public class StackUtil {
             copy.remove();
         }
 
-        while(!stack2.isEmpty() && !stack3.isEmpty()) {
+        while (!stack2.isEmpty() && !stack3.isEmpty()) {
             stack2.remove();
             stack3.remove();
         }
@@ -70,21 +68,21 @@ public class StackUtil {
         return stack3.getTop();
     }
 
-    public static Stack invert(Stack stack){
-        Stack aux= copy(stack);
-        Stack inverted= new StaticStack();
-        while(!aux.isEmpty()){
+    public static Stack invert(Stack stack) {
+        Stack aux = copy(stack);
+        Stack inverted = new StaticStack();
+        while (!aux.isEmpty()) {
             inverted.add(aux.getTop());
             aux.remove();
         }
         return inverted;
     }
 
-    public static int size(Stack stack){
+    public static int size(Stack stack) {
         int count = 0;
         Stack auxStack = copy(stack);
 
-        while(!auxStack.isEmpty()){
+        while (!auxStack.isEmpty()) {
             count++;
             auxStack.remove();
         }

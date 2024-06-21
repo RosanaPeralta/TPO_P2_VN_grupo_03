@@ -10,15 +10,18 @@ public interface Stack {
      * @param a valor a apilar.
      */
     void add(int a);
+
     /**
      * Precondicion: La pila no esta vacia.
      * Postcondicion: Desapila (quita el tope).
      */
     void remove();
+
     /**
      * @return <code>true</code> si la pila esta vacia, <code>false</code> en otro caso.
      */
     boolean isEmpty();
+
     /**
      * @return tope de la pila
      */

@@ -2,7 +2,7 @@ package org.example.Ejercicio2_6.model;
 
 import java.util.Random;
 
-public class StaticMultiSet implements MultiSet{
+public class StaticMultiSet implements MultiSet {
 
     private static final int MAX = 10000;
     private int[] elementos; // se almacenan los elementos del conjunto
@@ -33,11 +33,11 @@ public class StaticMultiSet implements MultiSet{
 
     @Override
     public void remove(int a) {
-        for(int i = 0; i < count; i++) {
-            if(this.elementos[i] == a) {
+        for (int i = 0; i < count; i++) {
+            if (this.elementos[i] == a) {
                 this.veces[i]--;
-                if(this.veces[i] == 0) {
-                    for(int j = i; j < count - 1; j++) {
+                if (this.veces[i] == 0) {
+                    for (int j = i; j < count - 1; j++) {
                         this.elementos[j] = this.elementos[j + 1];
                         this.veces[j] = this.veces[j + 1];
                     }

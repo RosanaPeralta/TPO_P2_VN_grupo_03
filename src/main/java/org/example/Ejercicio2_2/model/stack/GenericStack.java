@@ -4,9 +4,9 @@ import org.example.Ejercicio2_2.model.stack.GenericInterfaces.IGenericStack;
 
 public class GenericStack<E> implements IGenericStack<E> {
 
+    private static final int MAX = 10;
     private E[] array;
     private int count;
-    private static final int MAX = 10;
 
 
     public GenericStack() {
@@ -16,7 +16,7 @@ public class GenericStack<E> implements IGenericStack<E> {
 
 
     public void add(E item) {
-        if (count == MAX){
+        if (count == MAX) {
             throw new RuntimeException("No se pueden agregar elementos a una pila llena.");
         }
         array[count] = item;
@@ -24,7 +24,7 @@ public class GenericStack<E> implements IGenericStack<E> {
     }
 
     public void remove() {
-        if (count == 0){
+        if (count == 0) {
             throw new RuntimeException("No se pueden eliminar elementos de una pila vacía.");
         }
         count--;
@@ -35,10 +35,10 @@ public class GenericStack<E> implements IGenericStack<E> {
     }
 
     public E getTop() {
-        if (count == 0){
+        if (count == 0) {
             throw new RuntimeException("No se puede traer el primer elemento de una pila vacía");
         }
-        return array[count-1];
+        return array[count - 1];
     }
 
     public int size() {

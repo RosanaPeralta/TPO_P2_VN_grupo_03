@@ -14,7 +14,7 @@ public class StaticQueue implements Queue {
 
     @Override
     public void add(int a) {
-        if(count == 10000) {
+        if (count == 10000) {
             throw new RuntimeException("No se puede agregar el elemento");
         }
         array[count] = a;
@@ -23,10 +23,10 @@ public class StaticQueue implements Queue {
 
     @Override
     public void remove() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new RuntimeException("No se puede desacolar una cola vacia");
         }
-        for(int i = 0; i < count - 1; i++) {
+        for (int i = 0; i < count - 1; i++) {
             array[i] = array[i + 1];
         }
         count--;
@@ -39,7 +39,7 @@ public class StaticQueue implements Queue {
 
     @Override
     public int getFirst() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new RuntimeException("No se puede obtener el primero de una cola vacia");
         }
         return array[0];

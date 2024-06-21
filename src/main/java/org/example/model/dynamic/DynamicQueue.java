@@ -17,18 +17,18 @@ public class DynamicQueue implements Queue {
 
     @Override
     public void remove() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede desapilar una pila vacia");
         }
 
-        if(this.first.getNext() == null) {
+        if (this.first.getNext() == null) {
             this.first = null;
             return;
         }
 
         Node candidate = this.first;
         Node current = this.first.getNext();
-        while(current.getNext() != null) {
+        while (current.getNext() != null) {
             candidate = current;
             current = current.getNext();
         }
@@ -37,7 +37,7 @@ public class DynamicQueue implements Queue {
 
     @Override
     public int getFirst() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede desapilar una pila vacia");
         }
         return this.getLast().getValue();
@@ -50,7 +50,7 @@ public class DynamicQueue implements Queue {
 
     private Node getLast() {
         Node current = this.first;
-        while(current.getNext() != null) {
+        while (current.getNext() != null) {
             current = current.getNext();
         }
         return current;

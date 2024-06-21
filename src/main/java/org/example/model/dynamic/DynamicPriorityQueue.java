@@ -13,21 +13,21 @@ public class DynamicPriorityQueue implements PriorityQueue {
 
     @Override
     public void add(int a, int priority) {
-        if(this.isEmpty() || this.first.getPriority() > priority) {
+        if (this.isEmpty() || this.first.getPriority() > priority) {
             this.first = new PriorityNode(a, priority, this.first);
             return;
         }
 
         PriorityNode last = this.getLast();
-        if(last.getPriority() <= priority) {
+        if (last.getPriority() <= priority) {
             last.setNext(new PriorityNode(a, priority, null));
             return;
         }
 
         PriorityNode candidate = this.first;
         PriorityNode current = this.first.getNext();
-        while(current != null) {
-            if(current.getPriority() > priority) {
+        while (current != null) {
+            if (current.getPriority() > priority) {
                 candidate.setNext(new PriorityNode(a, priority, current));
                 break;
             }
@@ -38,7 +38,7 @@ public class DynamicPriorityQueue implements PriorityQueue {
 
     @Override
     public void remove() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede desapilar una pila vacia");
         }
 
@@ -47,7 +47,7 @@ public class DynamicPriorityQueue implements PriorityQueue {
 
     @Override
     public int getFirst() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede desapilar una pila vacia");
         }
         return this.first.getValue();
@@ -66,7 +66,7 @@ public class DynamicPriorityQueue implements PriorityQueue {
 
     private PriorityNode getLast() {
         PriorityNode current = this.first;
-        while(current.getNext() != null) {
+        while (current.getNext() != null) {
             current = current.getNext();
         }
         return current;

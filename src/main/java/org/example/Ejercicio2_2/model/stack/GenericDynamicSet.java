@@ -10,7 +10,7 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
 
 
     public E choose() {
-        if(this.count == 0) {
+        if (this.count == 0) {
             throw new RuntimeException("No se puede obtener elemento de un conjunto vacio");
         }
         Random random = new Random();
@@ -18,26 +18,26 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
 
         int i = 0;
         GenericNode<E> current = this.first;
-        while(current.getNext() != null) {
-            if(i == index) {
+        while (current.getNext() != null) {
+            if (i == index) {
                 return current.getValue();
             }
             i++;
             current = current.getNext();
         }
-            return current.getValue();
+        return current.getValue();
     }
 
     @Override
     public void add(E item) {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             this.first = new GenericNode<>(item, null);
             count++;
             return;
         }
         GenericNode<E> current = this.first;
-        while(current.getNext() != null) {
-            if(current.getValue().equals(item)) {
+        while (current.getNext() != null) {
+            if (current.getValue().equals(item)) {
                 return;
             }
             current = current.getNext();
@@ -48,11 +48,11 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
 
     @Override
     public void remove(E item) {
-        if(this.isEmpty()) { // Caso Set vacío
+        if (this.isEmpty()) { // Caso Set vacío
             throw new RuntimeException("No se pueden quitar elementos de un conjunto vacío");
         }
-        if(this.first.getNext() == null) { // Caso un único elemento
-            if(this.first.getValue().equals(item)) {
+        if (this.first.getNext() == null) { // Caso un único elemento
+            if (this.first.getValue().equals(item)) {
                 this.first = null;
                 count--;
             }
@@ -62,13 +62,13 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
         GenericNode<E> backup = this.first;
         GenericNode<E> current = this.first.getNext();
 
-        if(this.first == item){
+        if (this.first == item) {
             this.first = this.first.getNext();
             return;
         }
 
-        while(current.getNext() != null) { // Caso es un elemento en el medio
-            if(current.getValue().equals(item)) {
+        while (current.getNext() != null) { // Caso es un elemento en el medio
+            if (current.getValue().equals(item)) {
                 backup.setNext(current.getNext());
                 count--;
                 return;
@@ -77,7 +77,7 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
             backup = backup.getNext();
         }
 
-        if(current.getValue() == item) { // Caso es el último elemento
+        if (current.getValue() == item) { // Caso es el último elemento
             backup.setNext(null);
             count--;
         }

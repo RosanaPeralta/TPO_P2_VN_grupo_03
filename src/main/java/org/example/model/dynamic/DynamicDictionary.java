@@ -12,10 +12,10 @@ public class DynamicDictionary implements Dictionary {
     @Override
     public void add(int k, int v) {
         DictionaryNode current = this.first;
-        while(current != null && current.getKey() != k) {
+        while (current != null && current.getKey() != k) {
             current = current.getNext();
         }
-        if(current == null) {
+        if (current == null) {
             this.first = new DictionaryNode(k, v, this.first);
             this.count++;
         }
@@ -23,11 +23,11 @@ public class DynamicDictionary implements Dictionary {
 
     @Override
     public void remove(int k, int v) {
-        if(this.first == null) {
+        if (this.first == null) {
             throw new RuntimeException("No existe el par clave-valor");
         }
-        if(this.first.getNext() == null) {
-            if(this.first.getKey() == k && this.first.getValue() == v) {
+        if (this.first.getNext() == null) {
+            if (this.first.getKey() == k && this.first.getValue() == v) {
                 this.first = null;
                 this.count--;
                 return;
@@ -37,16 +37,16 @@ public class DynamicDictionary implements Dictionary {
 
         DictionaryNode backup = this.first;
         DictionaryNode current = this.first.getNext();
-        while(current != null && current.getKey() != k) {
+        while (current != null && current.getKey() != k) {
             backup = current;
             current = current.getNext();
         }
 
-        if(current == null) {
+        if (current == null) {
             throw new RuntimeException("No existe el par clave-valor");
         }
 
-        if(current.getValue() != v) {
+        if (current.getValue() != v) {
             throw new RuntimeException("No existe el valor para la clave");
         }
 
@@ -56,12 +56,12 @@ public class DynamicDictionary implements Dictionary {
 
     @Override
     public Set getKeys() {
-        if(this.first == null) {
+        if (this.first == null) {
             return new DynamicSet();
         }
         Set keys = new DynamicSet();
         DictionaryNode current = this.first;
-        while(current != null) {
+        while (current != null) {
             keys.add(current.getKey());
             current = current.getNext();
         }
@@ -71,12 +71,12 @@ public class DynamicDictionary implements Dictionary {
 
     @Override
     public int get(int k) {
-        if(this.first == null) {
+        if (this.first == null) {
             throw new RuntimeException("No existe un valor asociado a la clave");
         }
         DictionaryNode current = this.first;
-        while(current != null) {
-            if(current.getKey() == k) {
+        while (current != null) {
+            if (current.getKey() == k) {
                 return current.getValue();
             }
             current = current.getNext();

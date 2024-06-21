@@ -19,15 +19,15 @@ public class StaticPriorityQueue implements PriorityQueue {
 
     @Override
     public void add(int a, int priority) {
-        if(this.isEmpty() || priorities[count - 1] <= priority) {
+        if (this.isEmpty() || priorities[count - 1] <= priority) {
             values[count] = a;
             priorities[count] = priority;
             count++;
             return;
         }
 
-        if(priority <= priorities[0]) {
-            for(int i = count - 1; i >= 0; i--) {
+        if (priority <= priorities[0]) {
+            for (int i = count - 1; i >= 0; i--) {
                 values[i + 1] = values[i];
                 priorities[i + 1] = priorities[i];
             }
@@ -38,14 +38,14 @@ public class StaticPriorityQueue implements PriorityQueue {
         }
 
         int index = -1;
-        for(int i = 1; i < count; i++) {
-            if(priorities[i] > priority) {
+        for (int i = 1; i < count; i++) {
+            if (priorities[i] > priority) {
                 index = i;
                 break;
             }
         }
 
-        for(int i = count - 1; i >= index; i--) {
+        for (int i = count - 1; i >= index; i--) {
             values[i + 1] = values[i];
             priorities[i + 1] = priorities[i];
         }
@@ -56,10 +56,10 @@ public class StaticPriorityQueue implements PriorityQueue {
 
     @Override
     public void remove() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new RuntimeException("No se puede desacolar una cola vacia");
         }
-        for(int i = 0; i < count - 1; i++) {
+        for (int i = 0; i < count - 1; i++) {
             values[i] = values[i + 1];
             priorities[i] = priorities[i + 1];
         }

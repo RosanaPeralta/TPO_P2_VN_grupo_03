@@ -16,11 +16,11 @@ public class StaticDictionary implements Dictionary {
     }
 
     public void add(int k, int v) {
-        if(count == MAX) {
+        if (count == MAX) {
             throw new RuntimeException("Limite de elementos alcanzado");
         }
-        for(int i = 0; i < count; i++) {
-            if(this.array[i][0] == k) {
+        for (int i = 0; i < count; i++) {
+            if (this.array[i][0] == k) {
                 return;
             }
         }
@@ -31,9 +31,9 @@ public class StaticDictionary implements Dictionary {
     }
 
     public void remove(int k, int v) {
-        for(int i = 0; i < count; i++) {
-            if(this.array[i][0] == k) {
-                if(this.array[i][1] == v) {
+        for (int i = 0; i < count; i++) {
+            if (this.array[i][0] == k) {
+                if (this.array[i][1] == v) {
                     this.array[i] = this.array[count - 1];
                     count--;
                     return;
@@ -46,15 +46,15 @@ public class StaticDictionary implements Dictionary {
 
     public Set getKeys() {
         Set set = new StaticSet();
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             set.add(this.array[i][0]);
         }
         return set;
     }
 
     public int get(int k) {
-        for(int i = 0; i < count; i++) {
-            if(this.array[i][0] == k) {
+        for (int i = 0; i < count; i++) {
+            if (this.array[i][0] == k) {
                 return array[i][1];
             }
         }

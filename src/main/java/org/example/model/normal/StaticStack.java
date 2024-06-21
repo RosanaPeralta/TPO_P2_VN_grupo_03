@@ -14,21 +14,21 @@ public class StaticStack implements Stack {
     }
 
     public void add(int a) {
-        if(this.count >= MAX) {
+        if (this.count >= MAX) {
             throw new RuntimeException("Limite excedido");
         }
         this.array[this.count++] = a;
     }
 
     public void remove() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("Pila vacía");
         }
         this.count--;
     }
 
     public int getTop() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("Pila vacía");
         }
         return this.array[this.count - 1];
