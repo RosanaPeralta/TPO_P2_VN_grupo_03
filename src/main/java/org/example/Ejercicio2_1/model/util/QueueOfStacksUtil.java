@@ -24,20 +24,20 @@ public class QueueOfStacksUtil {
         }
 
         while(!queueOfStacks.isEmpty()){
-            aux1.addStack(StackUtil.copy(queueOfStacks.getFirst()));
-            aux2.addStack(StackUtil.copy(queueOfStacks.getFirst()));
-            queueOfStacks.removeStack();
+            aux1.add(StackUtil.copy(queueOfStacks.getFirst()));
+            aux2.add(StackUtil.copy(queueOfStacks.getFirst()));
+            queueOfStacks.remove();
             countColumns++;
         }
         while (!aux1.isEmpty()) {
-            queueOfStacks.addStack(aux1.getFirst());
-            aux1.removeStack();
+            queueOfStacks.add(aux1.getFirst());
+            aux1.remove();
         }
 
         while(!aux2.isEmpty()){
             Stack column = aux2.getFirst();
-            aux1.addStack(aux2.getFirst());
-            aux2.removeStack();
+            aux1.add(aux2.getFirst());
+            aux2.remove();
 
             while(!column.isEmpty()){
                 column.remove();
@@ -60,7 +60,7 @@ public class QueueOfStacksUtil {
         for(int i = 0; i <= countColumns-1; i++){
             QueueOfStacks aux = copy(queueOfStacks);
             for(int j = 0; j < countColumns-1-i; j++){
-                aux.removeStack();
+                aux.remove();
             }
             Stack row = StackUtil.copy(aux.getFirst());
             for(int k = 0; k < i; k++){
@@ -94,7 +94,7 @@ public class QueueOfStacksUtil {
             }
             previousStackSize = stackSize;
             queueSize++;
-            copyQueueOfStack.removeStack();
+            copyQueueOfStack.remove();
         }
 
         for (int i = 0; i < stackSize; i++) {
@@ -104,10 +104,10 @@ public class QueueOfStacksUtil {
                 int topCurrentStack = currentStack.getTop();
                 transposeStack.add(topCurrentStack);
                 currentStack.remove();
-                copyQueueOfStack1.addStack(currentStack);
-                copyQueueOfStack1.removeStack();
+                copyQueueOfStack1.add(currentStack);
+                copyQueueOfStack1.remove();
             }
-            traspuestaMatriz.addStack(transposeStack);
+            traspuestaMatriz.add(transposeStack);
         }
 
         for (int i = 0; i < queueSize; i++) {
@@ -116,8 +116,8 @@ public class QueueOfStacksUtil {
                 finalStack.add(traspuestaMatriz.getFirst().getTop());
                 traspuestaMatriz.getFirst().remove();
             }
-            traspuestaMatriz.addStack(finalStack);
-            traspuestaMatriz.removeStack();
+            traspuestaMatriz.add(finalStack);
+            traspuestaMatriz.remove();
         }
         return traspuestaMatriz;
     }
@@ -137,9 +137,9 @@ public class QueueOfStacksUtil {
                 aux_stack2.remove();
             }
             stack_suma=invert(stack_suma);
-            queueOfStacks_suma.addStack(stack_suma);
-            queueOfStacks_aux1.removeStack();
-            queueOfStacks_aux2.removeStack();
+            queueOfStacks_suma.add(stack_suma);
+            queueOfStacks_aux1.remove();
+            queueOfStacks_aux2.remove();
         }
 
         return queueOfStacks_suma;
@@ -150,13 +150,13 @@ public class QueueOfStacksUtil {
         QueueOfStacks aux2= new QueueOfStacks();
 
         while(!queueOfStacks.isEmpty()){
-            aux.addStack(StackUtil.copy(queueOfStacks.getFirst()));
-            aux2.addStack(StackUtil.copy(queueOfStacks.getFirst()));
-            queueOfStacks.removeStack();
+            aux.add(StackUtil.copy(queueOfStacks.getFirst()));
+            aux2.add(StackUtil.copy(queueOfStacks.getFirst()));
+            queueOfStacks.remove();
         }
         while(!aux.isEmpty()){
-            queueOfStacks.addStack(aux.getFirst());
-            aux.removeStack();
+            queueOfStacks.add(aux.getFirst());
+            aux.remove();
         }
         return aux2;
     }
@@ -169,7 +169,7 @@ public class QueueOfStacksUtil {
                 stack.remove();
             }
             System.out.println();
-            aux.removeStack();
+            aux.remove();
         }
     }
 

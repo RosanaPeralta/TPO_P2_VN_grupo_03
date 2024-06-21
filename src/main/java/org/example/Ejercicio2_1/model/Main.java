@@ -19,9 +19,9 @@ public class Main {
         columna3.add(7);
         columna3.add(8);
         columna3.add(9);
-        matriz.addStack(columna1);
-        matriz.addStack(columna2);
-        matriz.addStack(columna3);
+        matriz.add(columna1);
+        matriz.add(columna2);
+        matriz.add(columna3);
         QueueOfStacksUtil.traza(matriz);
     }
 }

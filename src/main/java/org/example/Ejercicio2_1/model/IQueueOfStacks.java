@@ -8,12 +8,12 @@ public interface IQueueOfStacks {
      *
      * @param queueOfStacks la cola de pilas que quiero calcular la traza
      */
-    void addStack(Stack stack);
+    void add(Stack stack);
     /**
      *
      * Calcula la longitud de la cola
      */
-    void removeStack();
+    void remove();
 
     /**
      *

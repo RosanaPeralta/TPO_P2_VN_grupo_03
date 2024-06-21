@@ -12,7 +12,7 @@ public class QueueOfStacks implements IQueueOfStacks {
         this.count = 0;
     }
 
-    public void addStack(Stack stack) {
+    public void add(Stack stack) {
         if(count == MAX) {
             throw new RuntimeException("Cantidad máxima de elementos alcanzada");
         }
@@ -20,7 +20,7 @@ public class QueueOfStacks implements IQueueOfStacks {
         count++;
     }
 
-    public void removeStack() {
+    public void remove() {
         if(this.isEmpty()) {
             throw new RuntimeException("No se puede remover la primer pila de una cola vacía");
         }

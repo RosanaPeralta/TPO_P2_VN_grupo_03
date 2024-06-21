@@ -42,8 +42,8 @@ public class Main {
         stack2.add(3);
 
         QueueOfStacks queueOfStacks = new QueueOfStacks();
-        queueOfStacks.addStack(stack1);
-        queueOfStacks.addStack(stack2);
+        queueOfStacks.add(stack1);
+        queueOfStacks.add(stack2);
         int traza = QueueOfStacksUtil.traza(queueOfStacks);
         System.out.println("Traza:");
         System.out.println(traza);
