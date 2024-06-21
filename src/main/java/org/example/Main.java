@@ -28,6 +28,7 @@ public class Main {
         ejercicio2_3();
         System.out.println("Ejercicio 2.4");
         ejerecicio2_4();
+        System.out.println();
         System.out.println("Ejercicio 2.6");
         ejercicio2_6();
     }
