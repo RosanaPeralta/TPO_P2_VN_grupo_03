@@ -6,6 +6,7 @@ import org.example.model.normal.StaticStack;
 import org.example.util.StackUtil;
 
 import static org.example.util.StackUtil.invert;
+import static org.example.util.StackUtil.size;
 
 public class QueueOfStacksUtil {
 
@@ -72,53 +73,79 @@ public class QueueOfStacksUtil {
 
     }
 
+
     public static QueueOfStacks traspuesta(QueueOfStacks queueOfStacks) {
+
         if (queueOfStacks.isEmpty()) {
             throw new RuntimeException("No se puede calcular la traspuesta de una matriz vacía");
         }
+
         QueueOfStacks traspuestaMatriz = new QueueOfStacks();
-        QueueOfStacks copyQueueOfStack = copy(queueOfStacks);
-        QueueOfStacks copyQueueOfStack1 = copy(queueOfStacks);
+        QueueOfStacks copyQueueOfStacks;
+        QueueOfStacks copyQueueOfStacksForMaxStack = copy(queueOfStacks);
+
         int queueSize = 0;
-        int stackSize = 0;
-        int previousStackSize = -1;
-        while (!copyQueueOfStack.isEmpty()) {
-            Stack auxStack = copyQueueOfStack.getFirst();
-            stackSize = 0;
+        int maxStackSize = 0;
+
+        while (!copyQueueOfStacksForMaxStack.isEmpty()) {
+            Stack auxStack = copyQueueOfStacksForMaxStack.getFirst();
+            int stackSize = 0;
+            Stack tempStack = new StaticStack();
+
             while (!auxStack.isEmpty()) {
                 stackSize++;
+                tempStack.add(auxStack.getTop());
                 auxStack.remove();
             }
-            if (previousStackSize != -1 && previousStackSize != stackSize) {
-                throw new RuntimeException("Se encontró una inconsistencia en las alturas de las pilas");
+
+            while (!tempStack.isEmpty()) {
+                auxStack.add(tempStack.getTop());
+                tempStack.remove();
             }
-            previousStackSize = stackSize;
+
+            if (stackSize > maxStackSize) {
+                maxStackSize = stackSize;
+            }
             queueSize++;
-            copyQueueOfStack.remove();
+            copyQueueOfStacksForMaxStack.remove();
         }
 
-        for (int i = 0; i < stackSize; i++) {
+        for (int i = 0; i < maxStackSize; i++) {
             Stack transposeStack = new StaticStack();
+            copyQueueOfStacks = copy(queueOfStacks);
+
             for (int j = 0; j < queueSize; j++) {
-                Stack currentStack = copyQueueOfStack1.getFirst();
-                int topCurrentStack = currentStack.getTop();
-                transposeStack.add(topCurrentStack);
-                currentStack.remove();
-                copyQueueOfStack1.add(currentStack);
-                copyQueueOfStack1.remove();
+                Stack currentStack = copyQueueOfStacks.getFirst();
+                Stack tempStack = new StaticStack();
+                Integer element = null;
+
+                while (!currentStack.isEmpty()) {
+                    int value = currentStack.getTop();
+                    currentStack.remove();
+                    tempStack.add(value);
+                    if (size(tempStack) == i + 1) {
+                        element = value;
+                    }
+                }
+
+                while (!tempStack.isEmpty()) {
+                    currentStack.add(tempStack.getTop());
+                    tempStack.remove();
+                }
+
+                if (element == null) {
+                    transposeStack.add(0);
+                } else {
+                    transposeStack.add(element);
+                }
+
+                copyQueueOfStacks.remove();
+                copyQueueOfStacks.add(currentStack);
             }
+
             traspuestaMatriz.add(transposeStack);
         }
 
-        for (int i = 0; i < queueSize; i++) {
-            Stack finalStack = new StaticStack();
-            for (int j = 0; j < stackSize; j++) {
-                finalStack.add(traspuestaMatriz.getFirst().getTop());
-                traspuestaMatriz.getFirst().remove();
-            }
-            traspuestaMatriz.add(finalStack);
-            traspuestaMatriz.remove();
-        }
         return traspuestaMatriz;
     }
 

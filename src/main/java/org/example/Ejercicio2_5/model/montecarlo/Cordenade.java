@@ -5,7 +5,7 @@ public class Cordenade {
     private double x;
     private double y;
 
-    public Cordenade(double x, double y){
+    public Cordenade(double x, double y) {
         this.x = x;
         this.y = y;
     }

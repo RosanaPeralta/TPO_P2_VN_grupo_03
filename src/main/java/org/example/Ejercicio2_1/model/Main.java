@@ -1,27 +1,31 @@
 package org.example.Ejercicio2_1.model;
 
 import org.example.Ejercicio2_1.model.util.QueueOfStacksUtil;
+import org.example.Ejercicio2_4.model.StaticStack;
 import org.example.model.definition.Stack;
-import org.example.model.dynamic.DynamicStack;
+
+import static org.example.Ejercicio2_1.model.util.QueueOfStacksUtil.print;
 
 public class Main {
     public static void main(String[] args) {
-        QueueOfStacks matriz = new QueueOfStacks();
-        Stack columna1 = new DynamicStack();
-        Stack columna2 = new DynamicStack();
-        Stack columna3 = new DynamicStack();
-        columna1.add(1);
-        columna1.add(2);
-        columna1.add(3);
-        columna2.add(4);
-        columna2.add(5);
-        columna2.add(6);
-        columna3.add(7);
-        columna3.add(8);
-        columna3.add(9);
-        matriz.add(columna1);
-        matriz.add(columna2);
-        matriz.add(columna3);
-        QueueOfStacksUtil.traza(matriz);
+        Stack stack1 = new StaticStack();
+        Stack stack2 = new StaticStack();
+        stack1.add(8);
+        stack1.add(4);
+        stack2.add(2);
+        stack2.add(3);
+
+        QueueOfStacks queueOfStacks = new QueueOfStacks();
+        queueOfStacks.add(stack1);
+        queueOfStacks.add(stack2);
+        int traza = QueueOfStacksUtil.traza(queueOfStacks);
+        System.out.println("Traza:");
+        System.out.println(traza);
+        QueueOfStacks traspuesta = QueueOfStacksUtil.traspuesta(queueOfStacks);
+        System.out.println("Traspuesta:");
+        print(traspuesta);
+        QueueOfStacks sumaMatricialResult = QueueOfStacksUtil.sumaMatricial(queueOfStacks, queueOfStacks);
+        System.out.println("Suma Matricial:");
+        print(sumaMatricialResult);
     }
 }

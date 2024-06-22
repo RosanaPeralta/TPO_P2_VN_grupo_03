@@ -42,4 +42,5 @@ public class QueueOfStacks implements IQueueOfStacks {
         return this.arrayStack[0];
     }
 
+
 }

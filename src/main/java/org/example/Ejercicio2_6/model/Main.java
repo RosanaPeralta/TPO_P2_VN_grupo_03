@@ -1,8 +1,5 @@
-package org.example;
+package org.example.Ejercicio2_6.model;
 
-import org.example.Ejercicio2_6.model.DynamicStackWithLimit;
-import org.example.Ejercicio2_6.model.RandomMultipleDictionary;
-import org.example.Ejercicio2_6.model.StaticMultiSet;
 import org.example.model.definition.Stack;
 
 import java.util.List;
@@ -11,14 +8,10 @@ import static org.example.util.StackUtil.printStack;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Grupo 3");
-    }
-
-    public static void ejercicio2_6() {
-        System.out.println("Pila creada con un límite:");
+        System.out.println("Punto 2.6.1");
         Stack stack = new DynamicStackWithLimit(4);
-        stack.add(1);
-        stack.add(1);
+        stack.add(7);
+        stack.add(5);
         stack.add(4);
         stack.add(1);
         printStack(stack);
@@ -94,6 +87,6 @@ public class Main {
 
         values2 = randomDictionary.get(8);
         System.out.println("Valor aleatorio para la clave 8 después de eliminar 40: " + values2.get(0));
-
     }
+
 }

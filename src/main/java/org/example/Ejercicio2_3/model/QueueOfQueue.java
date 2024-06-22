@@ -47,7 +47,7 @@ public class QueueOfQueue implements IQueueOfQueue {
     public QueueOfQueue concatenate(QueueOfQueue... queueOfQueues) {
         QueueOfQueue queueOfQueueConcatenated = new QueueOfQueue();
         for (int i = 0; i < queueOfQueues.length; i++) {
-            QueueOfQueue queueIterated = queueOfQueues[i];
+            QueueOfQueue queueIterated = copy(queueOfQueues[i]);
             if (queueIterated.isEmpty()) {
                 continue;
             }
