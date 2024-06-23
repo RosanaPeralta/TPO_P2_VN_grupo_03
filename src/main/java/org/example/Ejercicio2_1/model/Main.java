@@ -11,13 +11,14 @@ public class Main {
         Stack stack1 = new StaticStack();
         Stack stack2 = new StaticStack();
         stack1.add(8);
-        stack1.add(4);
-        stack2.add(2);
+        stack1.add(7);
+        stack2.add(11);
         stack2.add(3);
 
         QueueOfStacks queueOfStacks = new QueueOfStacks();
         queueOfStacks.add(stack1);
         queueOfStacks.add(stack2);
+        QueueOfStacksUtil.print(queueOfStacks);
         int traza = QueueOfStacksUtil.traza(queueOfStacks);
         System.out.println("Traza:");
         System.out.println(traza);
