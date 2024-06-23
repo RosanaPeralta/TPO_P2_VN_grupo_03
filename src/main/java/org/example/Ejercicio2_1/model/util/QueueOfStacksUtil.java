@@ -10,67 +10,82 @@ import static org.example.util.StackUtil.size;
 
 public class QueueOfStacksUtil {
 
-    public static int traza(QueueOfStacks queueOfStacks) {
-        QueueOfStacks aux1 = new QueueOfStacks();
+    public static QueueOfStacks copy(QueueOfStacks queueOfStacks) {
+        QueueOfStacks aux = new QueueOfStacks();
         QueueOfStacks aux2 = new QueueOfStacks();
-        int countColumns = 0;
-        int countRows = 0;
-        int maxRowElements = 0;
-        int traza = 0;
 
-        // Caso Crítico: No hay elementos en la matríz
+        while (!queueOfStacks.isEmpty()) {
+            aux.add(StackUtil.copy(queueOfStacks.getFirst()));
+            aux2.add(StackUtil.copy(queueOfStacks.getFirst()));
+            queueOfStacks.remove();
+        }
+        while (!aux.isEmpty()) {
+            queueOfStacks.add(aux.getFirst());
+            aux.remove();
+        }
+        return aux2;
+    }
 
+    public static int columnsCount(QueueOfStacks matriz){
+        QueueOfStacks copy = copy(matriz);
+        int colums = 0;
+        while (!copy.isEmpty()){
+            copy.remove();
+            colums++;
+        }
+        return colums;
+    }
+
+
+    public static int traza(QueueOfStacks queueOfStacks) {
         if (queueOfStacks.isEmpty()) {
             throw new RuntimeException("No se puede calcular la traza de una cola vacía");
         }
 
-        while (!queueOfStacks.isEmpty()) {
-            aux1.add(StackUtil.copy(queueOfStacks.getFirst()));
-            aux2.add(StackUtil.copy(queueOfStacks.getFirst()));
-            queueOfStacks.remove();
-            countColumns++;
-        }
-        while (!aux1.isEmpty()) {
-            queueOfStacks.add(aux1.getFirst());
-            aux1.remove();
-        }
+        QueueOfStacks aux1 = new QueueOfStacks();
+        QueueOfStacks aux2 = QueueOfStacksUtil.copy(queueOfStacks);
+        int countColumns = QueueOfStacksUtil.columnsCount(queueOfStacks);
+        int maxRowElements = 0;
+        int traza = 0;
+        boolean isSymmetric = true;
 
+        // Verificamos que todas las columnas tienen la misma longitud
         while (!aux2.isEmpty()) {
             Stack column = aux2.getFirst();
-            aux1.add(aux2.getFirst());
+            aux1.add(StackUtil.copy(aux2.getFirst()));
             aux2.remove();
+            int countRows = 0;
 
             while (!column.isEmpty()) {
                 column.remove();
                 countRows++;
             }
 
-            if (countRows > maxRowElements) {
-                maxRowElements = countRows;
+            if (maxRowElements != 0 && countRows != maxRowElements) {
+                isSymmetric = false;
             }
 
-            countRows = 0;
+            maxRowElements = countRows;
         }
 
         // Caso Crítico: Matriz no simétrica
-
-        if (maxRowElements != countColumns) {
+        if (!isSymmetric || maxRowElements != countColumns) {
             throw new RuntimeException("No se puede calcular la traza de una matriz no simétrica");
         }
 
-        for (int i = 0; i <= countColumns - 1; i++) {
-            QueueOfStacks aux = copy(queueOfStacks);
-            for (int j = 0; j < countColumns - 1 - i; j++) {
+        // Calculamos la traza
+        for (int i = 0; i < countColumns; i++) {
+            QueueOfStacks aux = QueueOfStacksUtil.copy(queueOfStacks);
+            for (int j = 0; j < i; j++) { // Eliminamos exactamente i elementos
                 aux.remove();
             }
-            Stack row = StackUtil.copy(aux.getFirst());
+            Stack row = aux.getFirst();
             for (int k = 0; k < i; k++) {
                 row.remove();
             }
-            traza += row.getTop();
+            traza += (int) row.getTop(); // Asegúrate que getTop devuelve un entero
         }
         return traza;
-
     }
 
 
@@ -170,22 +185,6 @@ public class QueueOfStacksUtil {
         }
 
         return queueOfStacks_suma;
-    }
-
-    public static QueueOfStacks copy(QueueOfStacks queueOfStacks) {
-        QueueOfStacks aux = new QueueOfStacks();
-        QueueOfStacks aux2 = new QueueOfStacks();
-
-        while (!queueOfStacks.isEmpty()) {
-            aux.add(StackUtil.copy(queueOfStacks.getFirst()));
-            aux2.add(StackUtil.copy(queueOfStacks.getFirst()));
-            queueOfStacks.remove();
-        }
-        while (!aux.isEmpty()) {
-            queueOfStacks.add(aux.getFirst());
-            aux.remove();
-        }
-        return aux2;
     }
 
     public static void print(QueueOfStacks queueOfStacks) {
