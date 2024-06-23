@@ -1,5 +1,7 @@
 package org.example.Ejercicio2_6.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class StaticMultiSet implements MultiSet {
@@ -59,8 +61,15 @@ public class StaticMultiSet implements MultiSet {
             System.out.println("No se puede elegir un elemento del conjunto vacio");
             return -1;
         }
+        // creo una lista nueva
+        List<Integer> listaExpandida = new ArrayList<>();
+        for (int i = 0; i < this.count; i++) {
+            for (int j = 0; j < this.veces[i]; j++) {
+                listaExpandida.add(this.elementos[i]);
+            }
+        }
         int randomIndex = (new Random()).nextInt(this.count);
-        return this.elementos[randomIndex];
+        return listaExpandida.get(randomIndex);
     }
 
     @Override

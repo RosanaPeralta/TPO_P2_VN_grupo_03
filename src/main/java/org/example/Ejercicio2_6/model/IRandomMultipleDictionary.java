@@ -37,6 +37,6 @@ public interface IRandomMultipleDictionary {
      * @param key -
      * @return values asociados al key
      */
-    List<Integer> get(int key);
+    Integer get(int key);
 
 }

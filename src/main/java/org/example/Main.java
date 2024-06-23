@@ -72,17 +72,17 @@ public class Main {
         randomDictionary.add(8, 50);
 
         // Obtengo elementos aleatorios
-        List<Integer> values1 = randomDictionary.get(1);
-        System.out.println("Valor aleatorio para la clave 1: " + values1.get(0));
+        Integer values1 = randomDictionary.get(1);
+        System.out.println("Valor aleatorio para la clave 1: " + values1);
 
         values1 = randomDictionary.get(1);
-        System.out.println("Valor aleatorio para la clave 1: " + values1.get(0));
+        System.out.println("Valor aleatorio para la clave 1: " + values1);
 
-        List<Integer> values2 = randomDictionary.get(8);
-        System.out.println("Valor aleatorio para la clave 8: " + values2.get(0));
+        Integer values2 = randomDictionary.get(8);
+        System.out.println("Valor aleatorio para la clave 8: " + values2);
 
         values2 = randomDictionary.get(8);
-        System.out.println("Valor aleatorio para la clave 8: " + values2.get(0));
+        System.out.println("Valor aleatorio para la clave 8: " + values2);
 
         // Elimino elementos
         randomDictionary.remove(1, 10);
@@ -90,10 +90,10 @@ public class Main {
 
         // Obteniendo elementos aleatorios después de eliminación
         values1 = randomDictionary.get(1);
-        System.out.println("Valor aleatorio para la clave 1 después de eliminar 10: " + values1.get(0));
+        System.out.println("Valor aleatorio para la clave 1 después de eliminar 10: " + values1);
 
         values2 = randomDictionary.get(8);
-        System.out.println("Valor aleatorio para la clave 8 después de eliminar 40: " + values2.get(0));
+        System.out.println("Valor aleatorio para la clave 8 después de eliminar 40: " + values2);
 
     }
 }

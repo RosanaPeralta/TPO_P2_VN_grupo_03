@@ -51,6 +51,28 @@ public class Main {
         // Verifico las veces después de múltiples eliminaciones
         System.out.println("Cantidad del elemento 20 después de eliminar tres veces: " + multiSet.count(20)); // Debería mostrar 0
 
+        System.out.println("----- Otra prueba del 2.6.4 -----");
+
+        multiSet.add(1);
+        multiSet.add(1);
+        multiSet.add(1);
+        multiSet.add(1);
+        multiSet.add(1);
+        multiSet.add(1);
+        multiSet.add(1);
+        multiSet.add(1);
+        multiSet.add(1);
+        multiSet.add(1);
+        multiSet.add(2);
+        multiSet.add(2);
+        multiSet.add(2);
+        multiSet.add(2);
+        multiSet.add(2);
+
+        System.out.println("Elemento elegido: " + multiSet.choose());
+        System.out.println("Elemento elegido: " + multiSet.choose());
+        System.out.println("Elemento elegido: " + multiSet.choose());
+
         System.out.println("------------------------------------");
 
         System.out.println("Punto 2.6.5");
@@ -65,17 +87,17 @@ public class Main {
         randomDictionary.add(8, 50);
 
         // Obtengo elementos aleatorios
-        List<Integer> values1 = randomDictionary.get(1);
-        System.out.println("Valor aleatorio para la clave 1: " + values1.get(0));
+        Integer values1 = randomDictionary.get(1);
+        System.out.println("Valor aleatorio para la clave 1: " + values1);
 
         values1 = randomDictionary.get(1);
-        System.out.println("Valor aleatorio para la clave 1: " + values1.get(0));
+        System.out.println("Valor aleatorio para la clave 1: " + values1);
 
-        List<Integer> values2 = randomDictionary.get(8);
-        System.out.println("Valor aleatorio para la clave 8: " + values2.get(0));
+        Integer values2 = randomDictionary.get(8);
+        System.out.println("Valor aleatorio para la clave 8: " + values2);
 
         values2 = randomDictionary.get(8);
-        System.out.println("Valor aleatorio para la clave 8: " + values2.get(0));
+        System.out.println("Valor aleatorio para la clave 8: " + values2);
 
         // Elimino elementos
         randomDictionary.remove(1, 10);
@@ -83,10 +105,10 @@ public class Main {
 
         // Obteniendo elementos aleatorios después de eliminación
         values1 = randomDictionary.get(1);
-        System.out.println("Valor aleatorio para la clave 1 después de eliminar 10: " + values1.get(0));
+        System.out.println("Valor aleatorio para la clave 1 después de eliminar 10: " + values1);
 
         values2 = randomDictionary.get(8);
-        System.out.println("Valor aleatorio para la clave 8 después de eliminar 40: " + values2.get(0));
+        System.out.println("Valor aleatorio para la clave 8 después de eliminar 40: " + values2);
     }
 
 }

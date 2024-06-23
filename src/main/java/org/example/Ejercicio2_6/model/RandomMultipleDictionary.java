@@ -76,19 +76,16 @@ public class RandomMultipleDictionary implements IRandomMultipleDictionary {
     }
 
     @Override
-    public List<Integer> get(int k) {
+    public Integer get(int k) {
         for (int i = 0; i < count; i++) {
             if (this.array[i][0] == k) {
                 List<Integer> values = new ArrayList<>();
                 for (int j = 0; j < this.array[i][1]; j++) {
                     values.add(this.array[i][j + 2]);
                 }
-                if (values.isEmpty()) {
-                    throw new RuntimeException("No existe un valor asociado a la clave");
-                }
                 // genero un indice aleatorio que selecciona un valor de la lista asociadoa a una clave
                 int randomIndice = random.nextInt(values.size());
-                return List.of(values.get(randomIndice));
+                return values.get(randomIndice);
             }
         }
         throw new RuntimeException("No existe la clave");
