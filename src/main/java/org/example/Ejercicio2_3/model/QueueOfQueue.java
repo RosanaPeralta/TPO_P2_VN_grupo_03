@@ -1,7 +1,10 @@
 package org.example.Ejercicio2_3.model;
 
+import org.example.Ejercicio2_3.model.util.StackOfQueue;
 import org.example.model.definition.Queue;
+import org.example.model.definition.Stack;
 import org.example.model.normal.StaticQueue;
+import org.example.model.normal.StaticStack;
 
 import static org.example.Ejercicio2_3.model.util.QueueOfQueueUtil.copy;
 
@@ -76,7 +79,28 @@ public class QueueOfQueue implements IQueueOfQueue {
     }
 
     public void reverseWithDepth() {
-        System.out.println("Not implemented");
+        Queue aux= new StaticQueue();
+        Stack stack= new StaticStack();
+        StackOfQueue stackofQueues= new StackOfQueue();
+
+
+        while(!this.isEmpty()){
+            aux=this.getFirst();
+            while(!aux.isEmpty()){
+                stack.add(aux.getFirst());
+                aux.remove();
+            }
+            while(!stack.isEmpty()){
+                aux.add(stack.getTop());
+                stack.remove();
+            }
+            stackofQueues.add(aux);
+            this.removeQueue();
+        }
+        while(!stackofQueues.isEmpty()){
+            this.addQueue(stackofQueues.getTop());
+            stackofQueues.remove();
+        }
     }
 
 }
