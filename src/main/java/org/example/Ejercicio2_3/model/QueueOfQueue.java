@@ -78,29 +78,29 @@ public class QueueOfQueue implements IQueueOfQueue {
         return queueConcatenada;
     }
 
-    public void reverseWithDepth() {
-        Queue aux= new StaticQueue();
-        Stack stack= new StaticStack();
-        StackOfQueue stackofQueues= new StackOfQueue();
+    public QueueOfQueue reverseWithDepth() {
+        Queue aux;
+        Stack stack = new StaticStack();
+        StackOfQueue stackQueues = new StackOfQueue();
 
-
-        while(!this.isEmpty()){
-            aux=this.getFirst();
-            while(!aux.isEmpty()){
+        while (!this.isEmpty()) {
+            aux = this.getFirst();
+            while (!aux.isEmpty()) {
                 stack.add(aux.getFirst());
                 aux.remove();
             }
-            while(!stack.isEmpty()){
+            while (!stack.isEmpty()) {
                 aux.add(stack.getTop());
                 stack.remove();
             }
-            stackofQueues.add(aux);
+            stackQueues.add(aux);
             this.removeQueue();
         }
-        while(!stackofQueues.isEmpty()){
-            this.addQueue(stackofQueues.getTop());
-            stackofQueues.remove();
+        while (!stackQueues.isEmpty()) {
+            this.addQueue(stackQueues.getTop());
+            stackQueues.remove();
         }
+        return this;
     }
 
 }

@@ -2,8 +2,6 @@ package org.example.Ejercicio2_6.model;
 
 import org.example.model.definition.Stack;
 
-import java.util.List;
-
 import static org.example.util.StackUtil.printStack;
 
 public class Main {

@@ -5,8 +5,6 @@ import org.example.Ejercicio2_6.model.RandomMultipleDictionary;
 import org.example.Ejercicio2_6.model.StaticMultiSet;
 import org.example.model.definition.Stack;
 
-import java.util.List;
-
 import static org.example.util.StackUtil.printStack;
 
 public class Main {

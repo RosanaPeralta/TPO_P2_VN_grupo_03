@@ -8,24 +8,24 @@ public class DynamicCyclicQueue implements Queue {
 
     @Override
     public void add(int a) {
-        if(this.isEmpty()){
-            this.first= new NodeDouble(a, null, null);
+        if (this.isEmpty()) {
+            this.first = new NodeDouble(a, null, null);
             this.first.setNext(this.first);
             this.first.setBefore(this.first);
             return;
         }
-        NodeDouble nuevo= new NodeDouble(a, this.first.getBefore(), this.first);
+        NodeDouble nuevo = new NodeDouble(a, this.first.getBefore(), this.first);
         this.first.getBefore().setNext(nuevo);
         this.first.setBefore(nuevo);
-        this.first=nuevo;
+        this.first = nuevo;
     }
 
     @Override
     public void remove() {
-        if(this.isEmpty()){
+        if (this.isEmpty()) {
             throw new RuntimeException("La cola está vacía");
         }
-        NodeDouble nodo= this.first.getBefore();
+        NodeDouble nodo = this.first.getBefore();
         nodo.getBefore().setNext(nodo.getNext());
         nodo.getNext().setBefore(nodo.getBefore());
         nodo.setNext(null);
@@ -34,7 +34,7 @@ public class DynamicCyclicQueue implements Queue {
 
     @Override
     public boolean isEmpty() {
-        return this.first==null;
+        return this.first == null;
     }
 
     @Override

@@ -33,5 +33,5 @@ public interface IQueueOfQueue {
      */
     Queue flat();
 
-    void reverseWithDepth();
+    QueueOfQueue reverseWithDepth();
 }

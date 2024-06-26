@@ -2,7 +2,7 @@ package org.example.Ejercicio2_6.model;
 
 import org.example.model.normal.StaticSet;
 
-public interface ISuperConjunto {
+public interface SuperSet {
 
     void add(int a);
 
@@ -12,7 +12,7 @@ public interface ISuperConjunto {
 
     int choose();
 
-    boolean esSubconjunto(StaticSet set);
+    boolean isSubSet(StaticSet set);
 
-    StaticSet complemento(StaticSet set);
+    StaticSet complement(StaticSet set);
 }

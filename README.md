@@ -1,6 +1,7 @@
 
 # Trabajo Práctico Obligatorio - Programación 2
-### Grupo 3
+
+## Grupo 3
 
 - Aguilar, Dante. 
 - Ferrini, Juan Pablo.
@@ -22,7 +23,7 @@
 #### 2.3 Ejercicio 3: Funciones de alto orden
 - [x] Función concatenate.
 - [x] Función flat.
-- [ ] Función reverseWithDepth.
+- [x] Función reverseWithDepth.
 
 #### 2.4 Ejercicio 4: Patrón Builder
 - [x] Stack y Set con patrón Builder.
@@ -40,8 +41,8 @@ Método de Montecarlo.
 
 #### 2.6. Ejercicio 6: Modificación a los TDAs
 - [x] Pila dinámica con capacidad limitada.
-- [ ] Superconjunto (o conjunto universal).
-- [ ] Cola dinámica cíclica doblemente enlazada.
+- [x] Superconjunto (o conjunto universal).
+- [x] Cola dinámica cíclica doblemente enlazada.
 - [x] Conjunto con repetidos.
 - [x] Dicccionario aleatorio.
 

@@ -46,6 +46,13 @@ public class Main {
         Queue flatConcatenada = queueOfQueue3.flat();
         printQueue(flatConcatenada);
         System.out.println();
+
+        System.out.println("Reversed With Depth");
+        QueueOfQueue queueOfQueue4 = new QueueOfQueue();
+        queueOfQueue4.addQueue(queue3);
+        queueOfQueue4.addQueue(queue4);
+        QueueOfQueue reversed = queueOfQueue4.reverseWithDepth();
+        printQueueOfQueue(reversed);
         System.out.println();
     }
 }

@@ -26,10 +26,10 @@ public class QueueOfStacksUtil {
         return aux2;
     }
 
-    public static int columnsCount(QueueOfStacks matriz){
+    public static int columnsCount(QueueOfStacks matriz) {
         QueueOfStacks copy = copy(matriz);
         int colums = 0;
-        while (!copy.isEmpty()){
+        while (!copy.isEmpty()) {
             copy.remove();
             colums++;
         }

@@ -2,8 +2,6 @@ package org.example.Ejercicio2_6.model;
 
 import org.example.model.definition.Set;
 
-import java.util.List;
-
 public interface IRandomMultipleDictionary {
 
     /**
