@@ -1,10 +1,11 @@
 package org.example.Ejercicio2_2.model.stack;
 
-import org.example.model.IGenericSet;
+import org.example.Ejercicio2_2.model.stack.GenericInterfaces.IGenericSet;
 
 import java.util.Random;
 
 public class GenericDynamicSet<E> implements IGenericSet<E> {
+    private Random random = new Random();
     private GenericNode<E> first;
     private int count = 0;
 
@@ -13,7 +14,6 @@ public class GenericDynamicSet<E> implements IGenericSet<E> {
         if (this.count == 0) {
             throw new RuntimeException("No se puede obtener elemento de un conjunto vacio");
         }
-        Random random = new Random();
         int index = random.nextInt(count);
 
         int i = 0;

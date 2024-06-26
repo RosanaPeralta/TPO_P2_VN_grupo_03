@@ -1,7 +1,7 @@
 package org.example.Ejercicio2_2.model.stack.GenericUtil;
 
 import org.example.Ejercicio2_2.model.stack.GenericDynamicSet;
-import org.example.model.IGenericSet;
+import org.example.Ejercicio2_2.model.stack.GenericInterfaces.IGenericSet;
 
 public class GenericSetUtil<E> {
 

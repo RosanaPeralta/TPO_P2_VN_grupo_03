@@ -1,10 +1,10 @@
 package org.example.Ejercicio2_2.model.stack;
 
 import org.example.Ejercicio2_2.model.stack.GenericInterfaces.IGenericQueue;
+import org.example.Ejercicio2_2.model.stack.GenericInterfaces.IGenericSet;
 import org.example.Ejercicio2_2.model.stack.GenericInterfaces.IGenericStack;
 import org.example.Ejercicio2_2.model.stack.GenericUtil.GenericSetUtil;
 import org.example.Ejercicio2_2.model.stack.GenericUtil.GenericStackUtil;
-import org.example.model.IGenericSet;
 
 public class Main {
     public static void main(String[] args) {

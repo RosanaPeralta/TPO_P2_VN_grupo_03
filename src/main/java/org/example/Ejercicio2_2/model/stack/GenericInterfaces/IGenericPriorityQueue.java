@@ -1,15 +1,15 @@
 package org.example.Ejercicio2_2.model.stack.GenericInterfaces;
 
-public interface IGenericPriorityQueue<E> {
-    void add(E item, E priority);
+public interface IGenericPriorityQueue<V, P> {
+    void add(V item, P priority);
 
     void remove();
 
     boolean isEmpty();
 
-    E getFirst();
+    V getFirst();
 
-    E getPriority();
+    P getPriority();
 
     int size();
 }

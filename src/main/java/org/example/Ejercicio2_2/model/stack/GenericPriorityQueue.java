@@ -2,21 +2,21 @@ package org.example.Ejercicio2_2.model.stack;
 
 import org.example.Ejercicio2_2.model.stack.GenericInterfaces.IGenericPriorityQueue;
 
-public class GenericPriorityQueue<E extends Comparable<E>> implements IGenericPriorityQueue<E> {
+public class GenericPriorityQueue<V, P extends Comparable<P>> implements IGenericPriorityQueue<V, P> {
 
     private static final int MAX = 10;
-    private E[] values;
-    private E[] priorities;
+    private V[] values;
+    private P[] priorities;
     private int count;
 
     public GenericPriorityQueue() {
-        this.values = (E[]) new Object[MAX];
-        this.priorities = (E[]) new Object[MAX];
+        this.values = (V[]) new Object[MAX];
+        this.priorities = (P[]) new Object[MAX];
         this.count = 0;
     }
 
-
-    public void add(E item, E priority) {
+    @Override
+    public void add(V item, P priority) {
         if (this.count == MAX) {
             throw new RuntimeException("No se pueden agregar elementos a una cola llena");
         }
@@ -78,7 +78,7 @@ public class GenericPriorityQueue<E extends Comparable<E>> implements IGenericPr
     }
 
     @Override
-    public E getFirst() {
+    public V getFirst() {
         if (this.isEmpty()) {
             throw new RuntimeException("No se puede obtener el primer elemento de una cola vacía");
         }
@@ -86,7 +86,7 @@ public class GenericPriorityQueue<E extends Comparable<E>> implements IGenericPr
     }
 
     @Override
-    public E getPriority() {
+    public P getPriority() {
         if (this.isEmpty()) {
             throw new RuntimeException("No se puede obtener el primer elemento de una cola vacía");
         }

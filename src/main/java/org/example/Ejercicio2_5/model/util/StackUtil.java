@@ -11,7 +11,7 @@ import static org.example.util.StackUtil.size;
 public class StackUtil {
 
     // O(N + C) ~ O(N)
-    public static int moveStackWithMinExtraction(Stack stackA, Stack stackB) {
+    public static int getMin(Stack stackA, Stack stackB) {
         int min = 0;  // C
         boolean flag = true;  // C
         // O(N + C) ~ O(N)
@@ -54,13 +54,13 @@ public class StackUtil {
 
         // O(N * (N + C + N + C)) ~ O(N^2)
         while (stackSize > 0) {  // N
-            int min = moveStackWithMinExtraction(stackA, stackB);  // N
+            int min = getMin(stackA, stackB);  // N
             stackC.add(min);  // C
             stackSize--;  // C
             if (stackSize == 0) {  // C
                 break;  // C
             }
-            min = moveStackWithMinExtraction(stackB, stackA);  // N
+            min = getMin(stackB, stackA);  // N
             stackC.add(min);  // C
             stackSize--;  // C
         }

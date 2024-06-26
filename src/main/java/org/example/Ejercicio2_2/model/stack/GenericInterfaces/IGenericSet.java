@@ -1,8 +1,8 @@
-package org.example.model;
+package org.example.Ejercicio2_2.model.stack.GenericInterfaces;
 
 public interface IGenericSet<E> {
 
-    Object choose();
+    E choose();
 
     void add(E item);
 
